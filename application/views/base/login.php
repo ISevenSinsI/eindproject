@@ -28,7 +28,7 @@
           <div class="menu-item first">
             <div class="menu-item-inner">
                 <a class="pure-button pure-button-small secondary-button" href="#">
-                    <i class="fa fa-lock fa-2x"></i>
+                    <i class="fa fa-desktop fa-2x"></i>
                     <p>Website</p>
                 </a>
             </div>
