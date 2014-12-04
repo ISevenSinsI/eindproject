@@ -26,6 +26,8 @@
  */
 class CI_Model {
 
+	private $class;
+
 	/**
 	 * Constructor
 	 *
@@ -34,6 +36,8 @@ class CI_Model {
 	function __construct()
 	{
 		log_message('debug', "Model Class Initialized");
+
+		$this->class = substr(get_class($this), 1);
 	}
 
 	/**
@@ -50,6 +54,28 @@ class CI_Model {
 		$CI =& get_instance();
 		return $CI->$key;
 	}
+
+	public function get($id)
+	{
+		$object = new $this->class($id);
+
+		return $object->to_array();
+	}
+
+	public function get_all()
+	{
+		$data = array();
+
+		$object = new $this->class();
+
+		foreach($object->get() as $_object)
+		{
+			$data[$_object->id] = $_object->to_array();
+		}
+
+		return $data;
+	}
+
 }
 // END Model Class
 

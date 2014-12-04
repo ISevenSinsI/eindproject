@@ -10,6 +10,19 @@
 |
 */
 
+$hook['pre_system'] = array
+(
+    'function' => 'definitions',
+    'filename' => 'definitions.php',
+    'filepath' => 'hooks'
+);
+
+$hook['pre_controller'] = array
+(
+    'filename' => 'page_route.php',
+    'function' => 'catch_page_route',
+    'filepath' => 'hooks'
+);
 
 
 /* End of file hooks.php */

@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Europe/Amsterdam');
 
 /*
  *---------------------------------------------------------------
@@ -27,7 +28,7 @@
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
-
+        
 if (defined('ENVIRONMENT'))
 {
 	switch (ENVIRONMENT)
@@ -190,12 +191,14 @@ if (defined('ENVIRONMENT'))
 
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
-
-/* --------------------------------------------------------------------
- * LOAD THE DATAMAPPER BOOTSTRAP FILE
+	
+/*
  * --------------------------------------------------------------------
+ * LOAD THE DATAMAPPER BOOTSTRAP FILE
+ * -------------------------------------------------------------------- *
  */
 require_once APPPATH.'third_party/datamapper/bootstrap.php';
+
 
 /*
  * --------------------------------------------------------------------
@@ -206,6 +209,7 @@ require_once APPPATH.'third_party/datamapper/bootstrap.php';
  *
  */
 require_once BASEPATH.'core/CodeIgniter.php';
+
 
 /* End of file index.php */
 /* Location: ./index.php */

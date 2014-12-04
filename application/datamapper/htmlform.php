@@ -49,15 +49,10 @@ class DMZ_HTMLForm {
 	);
 
 	function __construct($options = array(), $object = NULL) {
-
-		if (is_array($options) )
+		foreach($options as $k => $v)
 		{
-			foreach($options as $k => $v)
-			{
-				$this->{$k} = $v;
-			}
+			$this->{$k} = $v;
 		}
-
 		$this->CI =& get_instance();
 		$this->load = $this->CI->load;
 	}

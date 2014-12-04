@@ -13,14 +13,8 @@
  * @version 	2.0.0
  */
 
-// determine our driver alias name
-$org_driver = $driver;
-$driver = str_replace('CI_DB_', 'DM_DB_', $driver);
-
-if ( ! class_exists($driver, FALSE) )
-{
-	$dmclass = <<<CODE
-class $driver extends $org_driver
+$dmclass = <<<CODE
+class DM_DB_Driver extends $driver
 {
 	// public interface to internal driver methods
 	public function dm_call_method(\$function, \$p1 = null, \$p2 = null, \$p3 = null, \$p4 = null)
@@ -62,10 +56,12 @@ class $driver extends $org_driver
 }
 CODE;
 
-	// dynamically add our class extension
-	eval($dmclass);
-	unset($dmclass);
-}
+// dynamically add our class extension
+eval($dmclass);
+unset($dmclass);
+
+// and update the name of the class to instantiate
+$driver = 'DM_DB_Driver';
 
 /* End of file DB_driver.php */
 /* Location: ./application/third_party/datamapper/system/DB_driver.php */

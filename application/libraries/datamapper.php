@@ -8,7 +8,7 @@
  * @license 	MIT License
  * @package		DataMapper ORM
  * @category	DataMapper ORM
- * @author  	Harro Verton
+ * @author  	Harro Verton, James Wardlaw
  * @author  	Phil DeJarnett (up to v1.7.1)
  * @author  	Simon Stenhouse (up to v1.6.0)
  * @link		http://datamapper.wanwizard.eu/
@@ -213,24 +213,11 @@ class DataMapper implements IteratorAggregate {
 	 * @var array
 	 */
 	static $_dmz_config_defaults = array(
-		'prefix' => '',
-		'join_prefix' => '',
-		'error_prefix' => '<span class="error">',
-		'error_suffix' => '</span>',
+		'timestamp_format' => 'Y-m-d H:i:s O',
 		'created_field' => 'created',
 		'updated_field' => 'updated',
-		'local_time' => FALSE,
-		'unix_timestamp' => FALSE,
-		'timestamp_format' => 'Y-m-d H:i:s',
-		'lang_file_format' => 'model_${model}',
-		'field_label_lang_format' => '${model}_${field}',
-		'auto_transaction' => FALSE,
-		'auto_populate_has_many' => FALSE,
-		'auto_populate_has_one' => TRUE,
-		'all_array_uses_ids' => FALSE,
-		'db_params' => '',
-		'extensions' => array(),
 		'extensions_path' => 'datamapper',
+		'field_label_lang_format' => '${model}_${field}',
 	);
 
 	/**
@@ -245,6 +232,16 @@ class DataMapper implements IteratorAggregate {
 	 * @var object
 	 */
 	public $stored;
+	/**
+	 * DB Table Prefix
+	 * @var string
+	 */
+	public $prefix = '';
+	/**
+	 * DB Join Table Prefix
+	 * @var string
+	 */
+	public $join_prefix = '';
 	/**
 	 * The name of the table for this model (may be automatically generated
 	 * from the classname).
@@ -264,10 +261,78 @@ class DataMapper implements IteratorAggregate {
 	 */
 	public $primary_key = 'id';
 	/**
+	 * Can be used to override the default database behavior.
+	 * @var mixed
+	 */
+	public $db_params = '';
+	/**
+	 * Prefix string used when reporting errors.
+	 * @var string
+	 */
+	public $error_prefix = '';
+	/**
+	 * Suffic string used when reporting errors.
+	 * @var string
+	 */
+	public $error_suffix = '';
+	/**
+	 * Custom name for the automatic timestamp saved with new objects.
+	 * Defaults to 'created'.
+	 * @var string
+	 */
+	public $created_field = '';
+	/**
+	 * Custom name for the automatic timestamp saved when an object changes.
+	 * Defaults to 'updated'.
+	 * @var string
+	 */
+	public $updated_field = '';
+	/**
+	 * If TRUE, automatically wrap every save and delete in a transaction.
+	 * @var bool
+	 */
+	public $auto_transaction = FALSE;
+	/**
+	 * If TRUE, has_many relationships are automatically loaded when accessed.
+	 * Not recommended in most situations.
+	 * @var bool
+	 */
+	public $auto_populate_has_many = FALSE;
+	/**
+	 * If TRUE, has_one relationships are automatically loaded when accessed.
+	 * Not recommended in some situations.
+	 * @var bool
+	 */
+	public $auto_populate_has_one = FALSE;
+	/**
+	 * Enables the old method of storing the all array using an object's ID.
+	 * @var bool
+	 */
+	public $all_array_uses_ids = FALSE;
+	/**
 	 * The result of validate is stored here.
 	 * @var bool
 	 */
 	public $valid = FALSE;
+	/**
+	 * If TRUE, the created/updated fields are stored using local time.
+	 * If FALSE (the default), they are stored using UTC
+	 * @var bool
+	 */
+	public $local_time = FALSE;
+	/**
+	 * If TRUE, the created/updated fields are stored as a unix timestamp,
+	 * as opposed to a formatted string.
+	 * Defaults to FALSE.
+	 * @var bool
+	 */
+	public $unix_timestamp = FALSE;
+	/**
+	 * Set to a date format to override the default format of
+	 *	'Y-m-d H:i:s O'
+	 * @var string
+	 */
+	public $timestamp_format = '';
 	/**
 	 * delete relations on delete of an object. Defaults to TRUE.
 	 * set to FALSE if you RDBMS takes care of this using constraints
@@ -280,6 +345,23 @@ class DataMapper implements IteratorAggregate {
 	 * @var array
 	 */
 	public $fields = array();
+	/**
+	 * Set to a string to use when autoloading lang files.
+	 * Can contain two magic values: ${model} and ${table}.
+	 * These are automatically
+	 * replaced when looking up the language file.
+	 * Defaults to model_${model}
+	 * @var string
+	 */
+	public $lang_file_format = '';
+	/**
+	 * Set to a string to use when looking up field labels.  Can contain three
+	 * magic values: ${model}, ${table}, and ${field}.  These are automatically
+	 * replaced when looking up the language file.
+	 * Defaults to ${model}_${field}
+	 * @var string
+	 */
+	public $field_label_lang_format = '';
 	/**
 	 * Contains the result of the last query.
 	 * @var array
@@ -311,6 +393,18 @@ class DataMapper implements IteratorAggregate {
 	 * @var bool
 	 */
 	public $production_cache = FALSE;
+	/**
+	 * Used to determine where to look for extensions.
+	 * This should really only be set in the global configuration.
+	 * @var string
+	 */
+	public $extensions_path = '';
+	/**
+	 * If set to an array of names, this will automatically load the
+	 * specified extensions for this model.
+	 * @var mixed
+	 */
+	public $extensions = NULL;
 	/**
 	 * If a query returns more than the number of rows specified here,
 	 * then it will be automatically freed after a get.
@@ -384,43 +478,43 @@ class DataMapper implements IteratorAggregate {
 			$this->model = $common_key;
 		}
 
-		// If model is 'datamapper' then this is the initial autoload by CodeIgniter
-		if ($is_dmz)
-		{
-			// Load config settings
-			$this->config->load('datamapper', TRUE, TRUE);
-
-			// Get and store config settings
-			DataMapper::$config = $this->config->item('datamapper');
-
-			// now double check that all required config values were set
-			foreach(DataMapper::$_dmz_config_defaults as $config_key => $config_value)
-			{
-				if( ! array_key_exists($config_key, DataMapper::$config))
-				{
-					DataMapper::$config[$config_key] = $config_value;
-				}
-			}
-
-			DataMapper::_load_extensions(DataMapper::$global_extensions, DataMapper::$config['extensions']);
-			unset(DataMapper::$config['extensions']);
-
-			return;
-		}
-
 		// Load stored config settings by reference
 		foreach (DataMapper::$config as $config_key => &$config_value)
 		{
 			// Only if they're not already set
-			if ( ! property_exists($this, $config_key))
+			if (property_exists($this, $config_key))
 			{
-				$this->{$config_key} = $config_value;
+				$this->{$config_key} =& $config_value;
 			}
 		}
 
 		// Load model settings if not in common storage
 		if ( ! isset(DataMapper::$common[$common_key]))
 		{
+			// If model is 'datamapper' then this is the initial autoload by CodeIgniter
+			if ($is_dmz)
+			{
+				// Load config settings
+				$this->config->load('datamapper', TRUE, TRUE);
+
+				// Get and store config settings
+				DataMapper::$config = $this->config->item('datamapper');
+
+				// now double check that all required config values were set
+				foreach(DataMapper::$_dmz_config_defaults as $config_key => $config_value)
+				{
+					if(empty(DataMapper::$config[$config_key]))
+					{
+						DataMapper::$config[$config_key] = $config_value;
+					}
+				}
+
+				DataMapper::_load_extensions(DataMapper::$global_extensions, DataMapper::$config['extensions']);
+				unset(DataMapper::$config['extensions']);
+
+				return;
+			}
+
 			// load language file, if requested and it exists
 			if(!empty($this->lang_file_format))
 			{
@@ -611,7 +705,7 @@ class DataMapper implements IteratorAggregate {
 		// Load stored common model settings by reference
 		foreach(DataMapper::$common[$common_key] as $key => &$value)
 		{
-			$this->{$key} = $value;
+			$this->{$key} =& $value;
 		}
 
 		// Clear object properties to set at default values
@@ -831,7 +925,6 @@ class DataMapper implements IteratorAggregate {
 
 			// determine the file name and class name
 			$file = DataMapper::$config['extensions_path'] . '/' . $name . EXT;
-
 			if ( ! file_exists($file))
 			{
 				if(strpos($name, '/') === FALSE)
@@ -849,10 +942,6 @@ class DataMapper implements IteratorAggregate {
 				{
 					show_error('DataMapper Error: loading extension ' . $name . ': File not found.');
 				}
-			}
-			else
-			{
-				$ext = $name;
 			}
 
 			// load class
@@ -1298,6 +1387,141 @@ class DataMapper implements IteratorAggregate {
 		// Check if object has been validated (skipped for related items)
 		if ($this->_validated && empty($this->parent))
 		{
+			echo 1;
+			die();
+			// Reset validated
+			$this->_validated = FALSE;
+
+			// Use this objects properties
+			$data = $this->_to_array(TRUE);
+
+			if ( ! empty($data))
+			{
+				// Clear this object to make way for new data
+				$this->clear();
+
+				// Set up default order by (if available)
+				$this->_handle_default_order_by();
+
+				// Get by objects properties
+				$query = $this->db->get_where($this->table, $data, $limit, $offset);
+			} // FIXME: notify user if nothing was set?
+		}
+		else
+		{
+			// Clear this object to make way for new data
+			$this->clear();
+
+			// Set up default order by (if available)
+			$this->_handle_default_order_by();
+
+			// Get by built up query
+			// $query = $this->db->get($this->table, $limit, $offset);
+
+			$query = $this->db->get_where($this->table, array($this->table.".deleted" => "0000-00-00 00:00:00"), $limit, $offset);
+		}
+
+
+
+		// Convert the query result into DataMapper objects
+		if($query)
+		{
+			$this->_process_query($query);
+		}
+
+		// For method chaining
+		return $this;
+	}
+
+	/**
+	 * Get deleted
+	 *
+	 * Get deleted objects from the database.
+	 *
+	 * @param	integer|NULL $limit Limit the number of results.
+	 * @param	integer|NULL $offset Offset the results when limiting.
+	 * @return	DataMapper Returns self for method chaining.
+	 */
+	public function get_deleted($limit = NULL, $offset = NULL)
+	{
+
+		// Check if this is a related object and if so, perform a related get
+		if (! $this->_handle_related())
+		{
+			// invalid get request, return this for chaining.
+			return $this;
+		} // Else fall through to a normal get
+
+		$query = FALSE;
+
+		// Check if object has been validated (skipped for related items)
+		if ($this->_validated && empty($this->parent))
+		{
+			// Reset validated
+			$this->_validated = FALSE;
+
+			// Use this objects properties
+			$data = $this->_to_array(TRUE);
+
+			if ( ! empty($data))
+			{
+				// Clear this object to make way for new data
+				$this->clear();
+
+				// Set up default order by (if available)
+				$this->_handle_default_order_by();
+
+				// Get by objects properties
+				$query = $this->db->get_where($this->table, $data, $limit, $offset);
+			} // FIXME: notify user if nothing was set?
+		}
+		else
+		{
+			// Clear this object to make way for new data
+			$this->clear();
+
+			// Set up default order by (if available)
+			$this->_handle_default_order_by();
+
+			// Get by built up query
+			// $query = $this->db->get($this->table, $limit, $offset);
+
+			$query = $this->db->get_where($this->table, array($this->table.".deleted !=" => "0000-00-00 00:00:00"), $limit, $offset);
+		}
+
+
+
+		// Convert the query result into DataMapper objects
+		if($query)
+		{
+			$this->_process_query($query);
+		}
+
+		// For method chaining
+		return $this;
+	}
+
+	/**
+	 * [get_deleted description]
+	 * @param  [type] $limit  [description]
+	 * @param  [type] $offset [description]
+	 * @return [type]         [description]
+	 */
+	public function get_all($limit = NULL, $offset = NULL)
+	{
+
+		// Check if this is a related object and if so, perform a related get
+		if (! $this->_handle_related())
+		{
+			// invalid get request, return this for chaining.
+			return $this;
+		} // Else fall through to a normal get
+
+		$query = FALSE;
+
+		// Check if object has been validated (skipped for related items)
+		if ($this->_validated && empty($this->parent))
+		{
 			// Reset validated
 			$this->_validated = FALSE;
 
@@ -1326,7 +1550,11 @@ class DataMapper implements IteratorAggregate {
 
 			// Get by built up query
 			$query = $this->db->get($this->table, $limit, $offset);
+
+			// $query = $this->db->get_where($this->table, array($this->table.".deleted !=" => "0000-00-00 00:00:00"), $limit, $offset);
 		}
+
+
 
 		// Convert the query result into DataMapper objects
 		if($query)
@@ -1941,9 +2169,11 @@ class DataMapper implements IteratorAggregate {
 					}
 				}
 
+
 				// Delete the object itself
 				$this->db->where('id', $this->id);
-				$this->db->delete($this->table);
+				$this->db->update($this->table, array('deleted' => date("Y-m-d H:i:s")));
+
 
 				// Complete auto transaction
 				$this->_auto_trans_complete('delete');
@@ -2608,6 +2838,20 @@ class DataMapper implements IteratorAggregate {
 			echo $q;
 		}
 		return $q;
+	}
+
+	function debug_query($die = false)
+	{
+		debug($this->check_last_query(false, true), $die);
+	}
+
+	function debug($die = false)
+	{
+		debug($this->to_array());
+
+		if($die) {
+			die;
+		}
 	}
 
 	// --------------------------------------------------------------------
