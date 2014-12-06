@@ -88,6 +88,7 @@
 				`users`.`email`,
 				`users`.`phone`,
 				`users`.`address`,
+				`users`.`zipcode`,
 				`users`.`city`,
 				`users`.`country`,
 				`roles`.`name` AS `role`
