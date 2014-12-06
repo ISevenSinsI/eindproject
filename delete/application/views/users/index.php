@@ -11,7 +11,7 @@
 					<th><input data-column="5" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Woonplaats" /></th>
 					<th></th>
 				</tr>
-		        <tr>
+		        <tr class="table_legend">
 		            <th class="column-id">#</th>
 		            <th>Naam</th>
 		            <th>E-mail</th>

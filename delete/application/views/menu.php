@@ -1,13 +1,11 @@
-<?php if(is_authorized("users::index")): ?>
-    <div class="menu-item first">
-        <div class="menu-item-inner">
-            <a class="pure-button secondary-button" href="admin/users/">
-                <i class="fa fa-users fa-2x"></i>
-                <p>Gebruikers</p>
-            </a>
-        </div>
+<div class="menu-item first">
+    <div class="menu-item-inner">
+        <a class="pure-button secondary-button" href="../../users/overview.php">
+            <i class="fa fa-users fa-2x"></i>
+            <p>Gebruikers</p>
+        </a>
     </div>
-<?php endif; ?>
+</div>
 
 <div class="menu-item last">
     <div class="menu-item-inner">

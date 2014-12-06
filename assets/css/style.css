@@ -1,95 +1,37 @@
-.ui-datepicker{
-	width: 250px;
-}
-.ui-datepicker-calendar th span{
-	width: 50px;
-}
-
-
-
-/***Calendar Styling***/
-.calendar_table{
-	width: 500px;
-}
-.weekdays_row{
-	border-bottom: 1px solid black;
-}
-.weekdays_div{
-	width: 500px;
-}
-.event{
-
-}
-.week_row{
-
-}
-.day_div{
-
-}
-.calendar_wrapper{
-	margin-left: auto;
-	margin-right: auto;
-	width: 1000px;
-}
-.calendar_rooms{
-	float: none;
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
-	text-align: center;
-	margin-bottom: 15px;
-}
-.fc-event:hover{
-	cursor: pointer !important;
-}
-tbody tr:hover td {
- background: #afcbed !important;
-}
-.frequency_duration_div{
-	margin-top: 5px;
-}
-.get_calendar{
-	margin-top: 5px;
-	min-width: 75px;
-}
-.appointment_detail_date{
-	text-align: center;
-}
-.extra_width{
-	width: 250px !important;
-}
 .red_button{
 	background-color: #84CC7A !important;
-}
-.invoices_summary{
-	font-size: 18px; 
-	text-align: center
-}
-.button_invoice_month{
-	text-align: center;
-	margin-right: 5px;
-	min-width: 50px;
-	max-width: 50px;
-	margin-bottom: 5px;
 }
 .delete_button{
 	background-color: #cc2626 !important;
 }
-.invoice_given_date,.invoice_per_month{
+.content_inner{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+.content_inner input{
+	width: 200px;
+}
+.login_error{
+	background: rgb(202, 60, 60);	
+	width: 190px;
+	padding: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	border-radius: 7px;
+	margin-top: 10px;
 	display: none;
 }
-.dialog_appointment_saved{	
-	min-height: 400px !important;
-	min-width: 500px !important;
+.table_legend{
+	color: white;
 }
-.dialog_appointment_title{
-	min-width: 470px !important;
+.form_overview{
+	text-align: left;
 }
-.invoice_send_form{
-	overflow-x:hidden;
-	height: 400px !important;
-	width: 600px !important;
+.form_overview tbody tr td:first-child{
+	width: 200px;
 }
-.invoice_send_title{
-	width: 570px !important;
+.submenu{
+	
 }

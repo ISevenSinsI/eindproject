@@ -9,20 +9,20 @@
     
     <base href="<?=site_url();?>" />
 
-    <link rel="stylesheet" href="<?=site_url('assets/css/pure-min.css')?>">
-    <link rel="stylesheet" href="<?=site_url('assets/css/font-awesome.css')?>">
-    <link rel="stylesheet" href="<?=site_url('assets/css/jquery.dataTables.css')?>">
+    <!-- <link rel="stylesheet" href="<?=site_url('assets/css/pure-min.css')?>"> -->
+    <!-- <link rel="stylesheet" href="<?=site_url('assets/css/font-awesome.css')?>"> -->
+    <!-- <link rel="stylesheet" href="<?=site_url('assets/css/jquery.dataTables.css')?>"> -->
     <link rel="stylesheet" href="<?=site_url('assets/css/jquery.growl.css')?>">
     <link rel="stylesheet" href="<?=site_url('assets/css/chosen.min.css')?>">
     <link rel="stylesheet" href="<?=site_url('assets/css/animate.min.css')?>">
-    <link rel="stylesheet" href="<?=site_url('assets/css/global.css')?>">
+    <!-- <link rel="stylesheet" href="<?=site_url('assets/css/global.css')?>"> -->
     <link rel="stylesheet" href="<?=site_url('assets/css/ui-lightness/jquery-ui-1.10.4.custom.css')?>">
     <link rel='stylesheet' href="<?=site_url('assets/css/fullcalendar.css')?>">
     <link rel='stylesheet' href="<?=site_url('assets/css/fullcalendar.print.css')?>" media='print'>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
  
-    <script src="<?=site_url('assets/js/jquery.min.js')?>" ></script>
-    <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <!-- <script src="<?=site_url('assets/js/jquery.min.js')?>" ></script>
+    <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.js"></script> -->
     <script src="<?=site_url('assets/js/moment.min.js')?>"></script>
     <script src="<?=site_url('assets/js/tipcon.tabs.js')?>" ></script>
     <script src="<?=site_url('assets/js/DateTimePicker.js')?>" ></script>
