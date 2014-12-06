@@ -43,6 +43,10 @@
 				<td><input type="text" name="address" value="<?= $user['address']; ?>"/></td>
 			</tr>
 			<tr>
+				<td>Postcode</td>
+				<td><input type="text" name="zipcode" value="<?= $user['zipcode']; ?>"/></td>
+			</tr>
+			<tr>
 				<td>Plaats</td>
 				<td><input type="text" name="city" value="<?= $user['city']; ?>"/></td>
 			</tr>
