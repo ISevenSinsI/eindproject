@@ -84,6 +84,7 @@
 			role_id : $("select[name='role_id'] option:selected").val(),
 			phone : $("input[name='phone']").val(),
 			address : $("input[name='address']").val(),
+			zipcode : $("input[name='zipcode']").val(),
 			city : $("input[name='city']").val(),
 			country : $("input[name='country']").val(),
 		},function(data){
