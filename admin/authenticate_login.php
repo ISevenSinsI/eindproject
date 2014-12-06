@@ -16,7 +16,13 @@
 	function login_sql(){
 		$link = mysqli_connect('localhost', 'root', '', 'toolsforever');
 
-		return $link;
+		//check if connection is success
+		if(!$link){
+			die('Connect Error: ' . mysqli_connect_errno());
+		}
+		else{
+			return $link;
+		}
 	}
 
 	function check_login($email, $sha1_password){
