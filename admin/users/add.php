@@ -46,6 +46,10 @@
 				<td><input type="text" name="address" placeholder="Adres"/></td>
 			</tr>
 			<tr>
+				<td>Postcode</td>
+				<td><input type="text" name="zipcode" placeholder="Postcode"/></td>
+			</tr>
+			<tr>
 				<td>Plaats</td>
 				<td><input type="text" name="city" placeholder="Plaats"/></td>
 			</tr>
