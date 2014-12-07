@@ -1,4 +1,4 @@
-<?php 
+<?php
 	include("../base/header.php");
 	require("../functions/users.php"); 
 	$users = get_all_users();

@@ -32,6 +32,7 @@
 .form_overview tbody tr td:first-child{
 	width: 200px;
 }
-.submenu{
-	
+.breadcrumbs{
+	padding-bottom: 15px;
+	font-weight: bold;
 }

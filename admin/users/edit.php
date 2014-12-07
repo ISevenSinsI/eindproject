@@ -1,4 +1,10 @@
 <?php
+	session_start();
+	if($_SESSION["user"]["role_id"] != 1){
+		echo "Onvoldoende rechten.<br />";
+		die();
+	}
+
 	include("../base/header.php");
 	require("../functions/users.php");
 

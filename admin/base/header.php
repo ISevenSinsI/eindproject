@@ -1,3 +1,7 @@
+<?php
+    require("../functions/debug.php");
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -51,5 +55,15 @@
       </div>
     </div>
 
-    <div class="content container pure-g">
+    <div class="content container pure-g">  
+        <div class="breadcrumbs pure-u-1-3">
+            <?php $breadcrumb = breadcrumb(); ?>
+            <?php foreach($breadcrumb as $crumb): ?>
+                <?php if($crumb != reset($breadcrumb)): ?>
+                    ->
+                <?php endif; ?>
+
+                    <a href="<?= $crumb["link"]; ?>"><?= $crumb["display"]; ?></a>
+            <?php endforeach; ?>
+        </div>
         <div class="content_inner pure-u-1">
