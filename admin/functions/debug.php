@@ -39,24 +39,42 @@
 	}
 
 	function breadcrumb(){
+		// Get url from base
 		$url = $_SERVER["REQUEST_URI"]; 
+		// explode path
 		$explode = explode("/", $url);
         
+	
+		// Get last of array (i.e. 'edit.php?id=1') 
+		// And delete query parameter        
         $action = explode("?", array_pop($explode))[0];
+        // Translate action for display
         $action_display = translate($action);
 
+        // Get last of >>remaining<< array (i.e. 'users')
         $module = array_pop($explode);
         $module_display = translate($module);
+        // Translate module for display
+        $module_display = translate($module); 
 
         $full_url = get_full_url();
+        // Explode full url on the module you are on
+        // To get the full defined href
+        // I.e. 'http://boerenlevenerp.nl/users/edit.php?id=1'
+        // Explode into 'http://boerenlevenerp.nl/users'
         $explode = explode($module, $full_url);
 
         $data = array();
 
+        // Set module display name i.e. "Gebruikers"
         $data["module"]["display"] = $module_display;
         $data["module"]["link"] = $explode[0] . $module;
+    	// Make urls using the last explode + previous module explode
+    	$data["module"]["link"] = $explode[0] . $module;
+    	// Set action display name i.e. "Wijzigen"
         $data["action"]["display"] = $action_display;
-        $data["action"]["link"] = $explode[0] . $module . "/" . $action;        
+        // Make urls using the last explode + previous module explode
+        $data["action"]["link"] = $explode[0] . $module . "/" . $action;  
 
         return $data;
 	}
