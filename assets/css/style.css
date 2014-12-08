@@ -36,3 +36,6 @@
 	padding-bottom: 15px;
 	font-weight: bold;
 }
+.pure-form th input{
+	width: 100%;
+}

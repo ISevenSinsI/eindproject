@@ -17,13 +17,19 @@
 	function login_sql(){
 		$link = mysqli_connect('localhost', 'root', '', 'toolsforever');
 
-		return $link;
+		//check if connection is success
+		if(!$link){
+			die('Connect Error: ' . mysqli_connect_errno());
+		}
+		else{
+			return $link;
+		}
 	}
 
 	function get_all_users(){
 		$db = login_sql();
 
-		$sql = "
+		$sql = "	
 			SELECT 
 				`users`.`id`,
 				`users`.`name` AS `name`,

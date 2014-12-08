@@ -7,7 +7,7 @@
 	<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 		<thead>
 			<tr class="pure-form">
-				<th><input data-column="0" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="#" /></th>
+				<th class="column-id"><input data-column="0" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="#"/></th>
 				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Naam" /></th>
 				<th><input data-column="2" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Inlogcode" /></th>
 				<th><input data-column="3" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Rol" /></th>
