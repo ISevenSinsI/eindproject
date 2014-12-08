@@ -1,11 +1,12 @@
 <?php
     require("../functions/debug.php");
+    $current_page = page_name();
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ToolsForEver - Inloggen <?php //echo page name  ?></title>
+    <title>ToolsForEver - <?php echo $current_page;  ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -42,12 +43,8 @@
       <div class="container">
         <div class="pure-u-1">
             <?php
-                $url = $_SERVER["REQUEST_URI"]; 
-                $explode = explode("/", $url);
 
-                $last = count($explode) -2;
-
-                $current_page = $explode[$last];
+               
 
                 include("../submenus/{$current_page}.php");
             ?>

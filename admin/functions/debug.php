@@ -60,4 +60,16 @@
 
         return $data;
 	}
+
+	function page_name()
+	{
+		$url = $_SERVER["REQUEST_URI"]; 
+        $explode = explode("/", $url);
+
+        $last = count($explode) - 2;
+
+        $current_page = $explode[$last];
+
+        return $current_page;	
+	}
 ?>
