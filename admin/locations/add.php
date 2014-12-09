@@ -13,7 +13,8 @@
 	<table class="pure-table pure-table-bordered pure-table-striped pure-form form form_overview">
 		<thead>
 			<tr>
-				<th colspan="2">Gegevens aanpassen</th>
+				<th>Gegevens aanpassen</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -38,13 +39,15 @@
 
 <script>
 	$(".save_button").on("click",function(){
+		link = "<?= $breadcrumb['module']['link'] ?>";
+
 
 		$.post("../functions/locations.php",{
 			action: "new_location",
 			id : $("input[name='id']").val(),
 			name : $("input[name='name']").val(),
 		},function(data){
-			window.location = window.location;
+			window.location = link;
 		});
 	});
 </script>

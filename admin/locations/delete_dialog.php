@@ -2,7 +2,7 @@
 	<div class="dialog-inner">
 		<div class="dialog-title">
 			<div class="title">
-				Gebruiker verwijderen
+				Locatie verwijderen
 			</div>
 			<div class="dialog-close">
 				<i class="fa fa-times-circle"></i>
@@ -15,7 +15,7 @@
                 </div>
 
                  <div class="pure-control-group dialog_control">
-                	<input type="hidden" name="deleted_id" value="0" />
+                	<input type="text" name="deleted_id" value="0" />
 	               	<div class="pure-button pure-button-primary pure-button dialog-submit">Ja</div>
 	               	<div class="pure-button pure-button-primary pure-button dialog-close">Nee</div>
                	</div>
@@ -32,7 +32,7 @@ $(function(){
 
 			$.post('../functions/locations.php',{
 				action: 'delete_location',
-				id: id,
+				id: id
 			},function(data){
 				// window.location = window.location/;
 			});

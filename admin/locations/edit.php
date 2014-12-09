@@ -16,7 +16,8 @@
 	<table class="pure-table pure-table-bordered pure-table-striped pure-form form form_overview">
 		<thead>
 			<tr>
-				<th colspan="2">Gegevens aanpassen</th>
+				<th>Gegevens aanpassen</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>

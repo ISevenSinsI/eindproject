@@ -25,8 +25,8 @@
     <script src="../../assets/js/jquery.min.js" ></script>
     <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
     <script src="../../assets/js/jquery.dataTables.min.js"></script>
-    <script src="../../assets/js/tipcon.datatables.js"></script>
-    <script src="../../assets/js/tipcon.dialog.js"></script>
+    <script src="../../assets/js/custom.datatables.js"></script>
+    <script src="../../assets/js/custom.dialog.js"></script>
     <script src="../../assets/js/custom.js"></script>
 
   </head>

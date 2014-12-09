@@ -7,9 +7,9 @@
 	<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 		<thead>
 			<tr class="pure-form">
-				<th><input data-column="0" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="#" /></th>
+				<th class="column_id"><input data-column="0" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="#" /></th>
 				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Locatie" /></th>
-				<th></th>
+				<th class="table_actions"></th>
 			</tr>
 	        <tr class="table_legend">
 	        	<th>#</th>
@@ -54,7 +54,7 @@
 		locatie = $(this).data("locatie");
 
 		$(".title").html(locatie);
-		$("input[locatie='deleted_id']").val(id);
+		$("input[name='deleted_id']").val(id);
 
 		$(".dialog").show();
 

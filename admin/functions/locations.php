@@ -1,4 +1,3 @@
-
 <?php
 	// Check if action is posted to fetch ajax calls
 	if(isSet($_POST["action"])){
