@@ -56,5 +56,5 @@
 				`amount` int(11),
 
 				/* vaststellen relatie locatie */
-				FOREIGN KEY tweede(location_id) REFERENCES locations(id),
+				FOREIGN KEY tweede(location_id) REFERENCES locations(id)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
