@@ -23,37 +23,25 @@
         		<td><?= $user["id"]; ?></td>
         	</tr>
             <tr>
-                <td>Naam</td>
-                <td><?=$user["name"]?></td>
+                <td>Gebruikersnaam</td>
+                <td><?=$user["username"]?></td>
             </tr>
             <tr>
-            	<td>E-mail</td>
-            	<td><?= $user["email"]; ?></td>
+            	<td>Voorletters</td>
+            	<td><?= $user["initials"]; ?></td>
+            </tr>
+            <tr>
+                <td>Voorvoegsel</td>
+                <td><?=$user["prefix"]?></td>
+            </tr>
+            <tr>
+                <td>Achternaam</td>
+                <td><?=$user["last_name"];?></td>
             </tr>
             <tr>
                 <td>Rol</td>
                 <td><?=$user["role"]?></td>
             </tr>
-            <tr>
-                <td>Telefoon</td>
-                <td><?=$user["phone"]?></td>
-            </tr>
-            <tr>
-                <td>Adres</td>
-                <td><?=$user["address"]?></td>
-            </tr>
-            <tr>
-                <td>Postcode</td>
-                <td><?=$user["zipcode"]?></td>
-            </tr>
-            <tr>
-                <td>Stad</td>
-                <td><?=$user["city"]?></td>
-            </tr>
-            <tr>
-                <td>Land</td>
-                <td><?=$user["country"]?></td>
-            </tr>            
         </tbody>
     </table>
 </fieldset>

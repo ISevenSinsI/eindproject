@@ -23,11 +23,11 @@
 		<tbody>
 			<tr>
 				<td>Gebruikersnaam</td>
-				<td><input type="text" name="name" value="<?= $user['name']; ?>" /></td>
+				<td><input type="text" name="username" value="<?= $user['username']; ?>" required/></td>
 			</tr>	
 			<tr>
 				<td>Voorletters</td>
-				<td><input type="text" name="initials" value="<?= $user['email']; ?>"/></td>
+				<td><input type="text" name="initials" value="<?= $user['initials']; ?>" required/></td>
 			</tr>
 			<tr>
 				<td>Voorvoegsels</td>
@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 				<td>Achternaam</td>
-				<td><input type="text" name="last_name" value="<?= $user['last_name']; ?>" /></td>
+				<td><input type="text" name="last_name" value="<?= $user['last_name']; ?>" required/></td>
 			</tr>	
 			<tr>
 				<td>Rol</td>
@@ -49,15 +49,15 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Adres</td>
-				<td><input type="text" name="address" value="<?= $user['address']; ?>"/></td>
-			</tr>
-			<tr>
 				<td><input type="hidden" name="id" value="<?= $user['id']; ?>"/></td>
 				<td>
 					<div class="pure-button pure-button-primary edit_button">
 						Wijzigen
 					</div>
+					<span class="save_message">
+						<i class="fa fa-check-circle" style="color: green;"></i>
+						Opgeslagen!
+					</span>
 				</td>
 			</tr>
 		</tbody>
@@ -69,7 +69,6 @@
 
 <script>
 	$(".edit_button").on("click",function(){
-
 		$.post("../functions/users.php",{
 			action: "edit_user",
 			id : $("input[name='id']").val(),
@@ -79,7 +78,7 @@
 			prefix : $("input[name='prefix']").val(),
 			last_name : $("input[name='last_name']").val(),
 		},function(data){
-			window.location = window.location;
+			show_save_message();
 		});
 	});
 </script>

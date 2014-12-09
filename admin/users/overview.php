@@ -7,7 +7,7 @@
 	<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 		<thead>
 			<tr class="pure-form">
-				<th><input data-column="0" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="#" /></th>
+				<th class="column_id"><input data-column="0" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="#" /></th>
 				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Gebruikersnaam" /></th>
 				<th><input data-column="2" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Voorletters" /></th>
 				<th><input data-column="3" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Voorvoegsel" /></th>
@@ -16,7 +16,7 @@
 				<th></th>
 			</tr>
 	        <tr class="table_legend">
-	        	<th>#</th>
+	        	<th class="column_id">#</th>
 	            <th>Gebruikersnaam</th>
 	            <th>Voorletters</th>
 	            <th>Voorvoegsel</th>
@@ -46,7 +46,7 @@
 			        	<?php endif; ?>
 
 			        	<?php if($_SESSION["user"]["role_id"] == 1 && $user["id"] != "1"): ?>
-							<a href="#" class="pure-button pure-button-primary pure-button-small but_user_index button-delete-user delete_button" data-id="<?=$user['id'] ?>" data-name="<?= $user['name'] ?>" title="Verwijderen"><i class="fa fa-trash-o"></i></a>
+							<a href="#" class="pure-button pure-button-primary pure-button-small but_user_index button-delete-user delete_button" data-id="<?=$user['id'] ?>" data-name="<?= $user['username'] ?>" title="Verwijderen"><i class="fa fa-trash-o"></i></a>
 						<?php endif; ?>
 					</td>
 				</tr>

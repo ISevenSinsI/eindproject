@@ -65,11 +65,20 @@
 <script>	
 	$(document).ready(function(){
 		$(".login_btn").on("click", function(){
+			login();
+			return false;
+		});
 
+		$("input").keypress(function(key){
+			if(key.which == 13) {
+	        	login();
+	    	}
+		});
+
+		function login(){
 			// Hide error message
 			$(".login_error").fadeOut('fast');
 
-			// Get values
 			username = $("input[name='username']").val();
 			password = $("input[name='password']").val();
 
@@ -81,8 +90,6 @@
 				// Parse json object to normal string
 				result = jQuery.parseJSON(data);
 
-				console.log(result);
-
 				// Check result
 				if(result == "succeeded"){
 					// If succeeded, reload page due to session check
@@ -91,8 +98,6 @@
 					$(".login_error").fadeIn('slow');
 				}
 			});	
-
-			return false;
-		});
+		}
 	});
 </script>

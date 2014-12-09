@@ -26,6 +26,7 @@
     <script src="../../assets/js/jquery.dataTables.min.js"></script>
     <script src="../../assets/js/tipcon.datatables.js"></script>
     <script src="../../assets/js/tipcon.dialog.js"></script>
+    <script src="../../assets/js/custom.js"></script>
 
   </head>
   <body>

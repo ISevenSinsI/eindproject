@@ -86,7 +86,7 @@
 		$sql = "
 			SELECT
 				`users`.`id`,
-				`users`.`username` AS `name`,
+				`users`.`username`,
 				`users`.`initials`,
 				`users`.`prefix`,
 				`users`.`last_name`, 
@@ -141,9 +141,9 @@
 				`initials` 	= '{$data["initials"]}',
 				`prefix` 	= '{$data["prefix"]}',
 				`last_name` = '{$data["last_name"]}',
-				`role_id` 	= 	'{$data["role_id"]}',
+				`role_id` 	= '{$data["role_id"]}'
 			WHERE
-				`id` = '{$data["role_id"]}'
+				`users`.`id` = 	'{$data["id"]}'
 		";
 
 		$query = mysqli_query($db,$sql);
@@ -172,9 +172,11 @@
 				'{$data["initials"]}',
 				'{$data["prefix"]}',
 				'{$data["last_name"]}',
-				'{$data["role_id"]}',
+				'{$data["role_id"]}'
 			)
 		";
+
+		;
 
 		$query = mysqli_query($db,$sql);
 

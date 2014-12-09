@@ -28,11 +28,17 @@
 }
 .form_overview{
 	text-align: left;
-}
-.form_overview tbody tr td:first-child{
-	width: 200px;
-}
+}
 .breadcrumbs{
 	padding-bottom: 15px;
 	font-weight: bold;
+}
+.column_id{
+	width: 30px;
+}
+.column_id input{
+	width: 30px;
+}
+.save_message{
+	display: none;
 }
