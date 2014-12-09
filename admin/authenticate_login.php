@@ -1,11 +1,11 @@
 <?php
 	// Check if post sessions are set to prevent direct access via url
-	if(isSet($_POST["email"]) && isSet($_POST["password"])){
-		$email = $_POST["email"];
+	if(isSet($_POST["username"]) && isSet($_POST["password"])){
+		$username = $_POST["username"];
 		$password = sha1($_POST["password"]);
 
 		// Check login and return result
-		echo json_encode(check_login($email, $password));
+		echo json_encode(check_login($username, $password));
 	} else {
 		// Give message + redirect link that direct access is not allowed
 		echo "Geen directe toegang toegestaan, keer terug naar de inlog pagina<br />";
@@ -25,9 +25,11 @@
 		}
 	}
 
-	function check_login($email, $sha1_password){
+	function check_login($username, $sha1_password){
 		// Login to database
 		$db = login_sql();
+
+		$username = strtolower($username);
 
 		$sql = "
 			SELECT 
@@ -35,9 +37,11 @@
 			FROM
 				`users`
 			WHERE
-				`email` = '{$email}'
+				LOWER(username) = '{$username}'
 			AND
 				`password` = '{$sha1_password}'
+			AND NOT
+				`deleted`
 		";
 
 		$query = mysqli_query($db,$sql);

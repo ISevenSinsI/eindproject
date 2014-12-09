@@ -8,20 +8,20 @@
 		<thead>
 			<tr class="pure-form">
 				<th><input data-column="0" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="#" /></th>
-				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Naam" /></th>
-				<th><input data-column="2" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Inlogcode" /></th>
-				<th><input data-column="3" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Rol" /></th>
-				<th><input data-column="4" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Tel-nr" /></th>
-				<th><input data-column="5" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Woonplaats" /></th>
+				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Gebruikersnaam" /></th>
+				<th><input data-column="2" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Voorletters" /></th>
+				<th><input data-column="3" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Voorvoegsel" /></th>
+				<th><input data-column="4" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Achternaam" /></th>
+				<th><input data-column="5" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Rol" /></th>
 				<th></th>
 			</tr>
 	        <tr class="table_legend">
 	        	<th>#</th>
-	            <th>Naam</th>
-	            <th>E-mail</th>
+	            <th>Gebruikersnaam</th>
+	            <th>Voorletters</th>
+	            <th>Voorvoegsel</th>
+	            <th>Achternaam</th>
 	            <th>Rol</th>
-	            <th>Tel-nr</th>
-	            <th>Woonplaats</th>
 	            <th>Acties</th>
 	        </tr>
 		</thead>
@@ -29,11 +29,11 @@
 			<?php foreach($users as $user): ?>
 				<tr>
 					<td><?= $user["id"]; ?></td>
-					<td><?= $user["name"]; ?></td>
-					<td><?= $user["email"]; ?></td>
+					<td><?= $user["username"]; ?></td>
+					<td><?= $user["initials"]; ?></td>
+					<td><?= $user["prefix"]; ?></td>
+					<td><?= $user["last_name"]; ?></td>
 					<td><?= $user["role"]; ?></td>
-					<td><?= $user["phone"]; ?></td>
-					<td><?= $user["city"]; ?></td>
 					<td>
 					 	<a href="details.php?id=<?= $user['id'] ?>" class="pure-button pure-button-primary pure-button-small but_user_index" title="Details">
 			          		<i class="fa fa-info-circle"></i>

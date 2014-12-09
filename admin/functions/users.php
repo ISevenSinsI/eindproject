@@ -32,10 +32,11 @@
 		$sql = "
 			SELECT 
 				`users`.`id`,
-				`users`.`name` AS `name`,
-				`users`.`email`,
-				`users`.`phone`,
-				`users`.`city`,
+				`users`.`username`,
+				`users`.`initials`,
+				`users`.`prefix`,
+				`users`.`last_name`, 
+				`users`.`role_id`,
 				`roles`.`name` AS `role`
 			FROM
 				`users`
@@ -43,8 +44,8 @@
 				`roles`
 			ON
 				`users`.`role_id` = `roles`.`id`
-			WHERE
-				`users`.`deleted` = '0000-00-00 00:00:00.000000'
+			WHERE NOT
+				`users`.`deleted`
 		";
 		
 		$query = mysqli_query($db,$sql);
@@ -53,7 +54,7 @@
 
 		while($row = mysqli_fetch_assoc($query)){
 			$data[$row["id"]] = $row;
-			$data[$row["id"]]["name"] = $row["name"];
+			$data[$row["id"]]["username"] = $row["username"];
 		}
 
 
@@ -63,14 +64,11 @@
 	function delete_user($id){
 		$db = login_sql();
 
-		// $datetime = get_datetime_microseconds();
-		$datetime = date("Y-m-d H:i:s");
-
 		$sql = "
 			UPDATE
 				`users`
 			SET
-				`deleted` = '{$datetime}'
+				`deleted` = 1
 			WHERE
 				`id` = '{$id}'
 		";
@@ -88,13 +86,10 @@
 		$sql = "
 			SELECT
 				`users`.`id`,
-				`users`.`name` AS `name`,
-				`users`.`email`,
-				`users`.`phone`,
-				`users`.`address`,
-				`users`.`zipcode`,
-				`users`.`city`,
-				`users`.`country`,
+				`users`.`username` AS `name`,
+				`users`.`initials`,
+				`users`.`prefix`,
+				`users`.`last_name`, 
 				`roles`.`name` AS `role`
 			FROM
 				`users`
@@ -142,13 +137,11 @@
 			UPDATE
 				`users`
 			SET
-				`name`		=	'{$data["name"]}',
-				`email` 	= 	'{$data["email"]}',
+				`username`	= '{$data["username"]}',
+				`initials` 	= '{$data["initials"]}',
+				`prefix` 	= '{$data["prefix"]}',
+				`last_name` = '{$data["last_name"]}',
 				`role_id` 	= 	'{$data["role_id"]}',
-				`phone` 	= 	'{$data["phone"]}',
-				`address` 	= 	'{$data["address"]}',
-				`city` 		= 	'{$data["city"]}',
-				`country` 	= 	'{$data["country"]}'
 			WHERE
 				`id` = '{$data["role_id"]}'
 		";
@@ -166,24 +159,20 @@
 		$sql = "
 			INSERT INTO
 				`users`(
-					`name`,
+					`username`,
 					`password`,
-					`email`,
-					`role_id`,
-					`phone`,
-					`address`,
-					`city`,
-					`country`
+					`initials`,
+					`prefix`,
+					`last_name`,
+					`role_id`
 				)
 			VALUES (
-				'{$data["name"]}',
+				'{$data["username"]}',
 				'{$password}',
-				'{$data["email"]}',
+				'{$data["initials"]}',
+				'{$data["prefix"]}',
+				'{$data["last_name"]}',
 				'{$data["role_id"]}',
-				'{$data["phone"]}',
-				'{$data["address"]}',
-				'{$data["city"]}',
-				'{$data["country"]}'
 			)
 		";
 

@@ -50,7 +50,7 @@
     		<form action="authenticate_login.php" method="post" class="pure-form login_form">
     			<fieldset>
     				<legend>ToolsForEver - Inloggen</legend>
-	    			<input type="text" name="email" placeholder="E-mail"/><br />
+	    			<input type="text" name="username" placeholder="Gebruikersnaam"/><br />
 	    			<input type="password" name="password" placeholder="password"/><br />
 	    			<div class="login_error">Inloggegevens incorrect.</div><br />
 	    			<div class="login_btn pure-button pure-button-primary"/>Inloggen</div><br /><br />	
@@ -70,16 +70,18 @@
 			$(".login_error").fadeOut('fast');
 
 			// Get values
-			email = $("input[name='email']").val();
+			username = $("input[name='username']").val();
 			password = $("input[name='password']").val();
 
 			// Post to login authentication function
 			$.post("authenticate_login.php",{
-				email: email,
+				username: username,
 				password: password,
 			},function(data){
 				// Parse json object to normal string
 				result = jQuery.parseJSON(data);
+
+				console.log(result);
 
 				// Check result
 				if(result == "succeeded"){

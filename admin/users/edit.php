@@ -22,13 +22,21 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>Naam</td>
+				<td>Gebruikersnaam</td>
 				<td><input type="text" name="name" value="<?= $user['name']; ?>" /></td>
 			</tr>	
 			<tr>
-				<td>E-mail</td>
-				<td><input type="text" name="email" value="<?= $user['email']; ?>"/></td>
+				<td>Voorletters</td>
+				<td><input type="text" name="initials" value="<?= $user['email']; ?>"/></td>
 			</tr>
+			<tr>
+				<td>Voorvoegsels</td>
+				<td><input type="text" name="prefix" value="<?= $user['prefix']; ?>"/></td>
+			</tr>
+			<tr>
+				<td>Achternaam</td>
+				<td><input type="text" name="last_name" value="<?= $user['last_name']; ?>" /></td>
+			</tr>	
 			<tr>
 				<td>Rol</td>
 				<td>
@@ -41,24 +49,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Telefoonnummer</td>
-				<td><input type="text" name="phone" value="<?= $user['phone']; ?>"/></td>
-			</tr>
-			<tr>
 				<td>Adres</td>
 				<td><input type="text" name="address" value="<?= $user['address']; ?>"/></td>
-			</tr>
-			<tr>
-				<td>Postcode</td>
-				<td><input type="text" name="zipcode" value="<?= $user['zipcode']; ?>"/></td>
-			</tr>
-			<tr>
-				<td>Plaats</td>
-				<td><input type="text" name="city" value="<?= $user['city']; ?>"/></td>
-			</tr>
-			<tr>
-				<td>Land</td>
-				<td><input type="text" name="country" value="<?= $user['country']; ?>"/></td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="id" value="<?= $user['id']; ?>"/></td>
@@ -81,13 +73,11 @@
 		$.post("../functions/users.php",{
 			action: "edit_user",
 			id : $("input[name='id']").val(),
-			name : $("input[name='name']").val(),
-			email: $("input[name='email']").val(),
+			username : $("input[name='username']").val(),
+			initials: $("input[name='initials']").val(),
 			role_id : $("select[name='role_id'] option:selected").val(),
-			phone : $("input[name='phone']").val(),
-			address : $("input[name='address']").val(),
-			city : $("input[name='city']").val(),
-			country : $("input[name='country']").val(),
+			prefix : $("input[name='prefix']").val(),
+			last_name : $("input[name='last_name']").val(),
 		},function(data){
 			window.location = window.location;
 		});
