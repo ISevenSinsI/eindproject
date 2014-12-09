@@ -14,6 +14,7 @@
 	        <tr class="table_legend">
 	        	<th>#</th>
 	            <th>Locatie</th>
+	            <th>Acties</th>
 	        </tr>
 		</thead>
 		<tbody>
