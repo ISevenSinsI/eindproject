@@ -1,6 +1,7 @@
 <?php
     require("../functions/debug.php");
-    // require("../functions/crud.php");
+    require_once dirname(__FILE__).'/../functions/debug_ruud.php';
+    Debug::enable(); //power on the superior debug class
     $current_page = page_name();
     $page_name = translate($current_page);
 ?>
