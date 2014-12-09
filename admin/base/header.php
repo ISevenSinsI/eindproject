@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../../assets/css/global.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="../../assets/css/select2.css"/>
   
     <script src="../../assets/js/jquery.min.js" ></script>
     <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
@@ -28,6 +29,8 @@
     <script src="../../assets/js/custom.datatables.js"></script>
     <script src="../../assets/js/custom.dialog.js"></script>
     <script src="../../assets/js/custom.js"></script>
+    <script src="../../assets/js/select2.js"></script>
+    <script src="../../assets/js/select2_locale_nl.js"></script>
 
   </head>
   <body>
