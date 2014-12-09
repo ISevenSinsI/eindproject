@@ -51,3 +51,6 @@
 table .column-id {
 	width: 50px !important;
 }
+.pure-button-small{
+	margin-left:5px;
+}
