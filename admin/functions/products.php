@@ -75,29 +75,24 @@
 		return $data;
 	}
 
-	function new_user($data){
-		d($data);
+	function new_product($data){
 		$db = login_sql();
-
-		$password = sha1($data["password"]);
 
 		$sql = "
 			INSERT INTO
-				`users`(
-					`username`,
-					`password`,
-					`initials`,
-					`prefix`,
-					`last_name`,
-					`role_id`
+				`products`(
+					`product`,
+					`type`,
+					`factory_id`,
+					`buy_price`,
+					`sell_price`
 				)
 			VALUES (
-				'{$data["username"]}',
-				'{$password}',
-				'{$data["initials"]}',
-				'{$data["prefix"]}',
-				'{$data["last_name"]}',
-				'{$data["role_id"]}'
+				'{$data["product"]}',
+				'{$data["type"]}',
+				'{$data["factory_id"]}',
+				'{$data["buy_price"]}',
+				'{$data["sell_price"]}'
 			)
 		";
 
@@ -106,4 +101,69 @@
 		$query = mysqli_query($db,$sql);
 
 		return true;
+	}
+
+	function delete_product($id){
+		$db = login_sql();
+
+		$sql = "
+			UPDATE
+				`products`
+			SET
+				`deleted` = 1
+			WHERE
+				`id` = '{$id}'
+		";
+
+	
+		$query = mysqli_query($db,$sql);
+
+		return true;
+	}
+
+	function edit_product($data){
+		$db = login_sql();
+
+		$sql = "
+			UPDATE
+				`products`
+			SET
+				`product`	= '{$data["product"]}',
+				`type` 	= '{$data["type"]}',
+				`factory_id` 	= '{$data["factory_id"]}',
+				`buy_price` = '{$data["buy_price"]}',
+				`sell_price` 	= '{$data["sell_price"]}'
+			WHERE
+				`products`.`id` = 	'{$data["id"]}'
+		";
+
+		$query = mysqli_query($db,$sql);
+
+		return true;
+	}
+
+	function get_product($id){
+		$db = login_sql();
+
+		$sql = "
+			SELECT
+				`products`.`id`,
+				`products`.`product`,
+				`products`.`type`,
+				`products`.`factory_id`,
+				`products`.`buy_price`, 
+				`products`.`sell_price`
+			FROM
+				`products`
+			WHERE
+				`products`.`id` = '{$id}'
+		";
+
+		$query = mysqli_query($db, $sql);
+
+		while($row = mysqli_fetch_assoc($query)){
+			$data = $row;
+		}	
+
+		return $data;
 	}

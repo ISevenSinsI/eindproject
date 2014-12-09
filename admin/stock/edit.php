@@ -8,6 +8,8 @@
 	include("../base/header.php");
 	require("../functions/products.php");
 
+	$id = $_GET["id"];
+	$product = get_product($id);
 	$factories = get_all_factories();
 ?>
 
@@ -22,19 +24,18 @@
 		<tbody>
 			<tr>
 				<td>Product</td>
-				<td><input type="text" name="product" placeholder="Product" required/></td>
+				<td><input type="text" name="product" value="<?= $product['product']; ?>" required/></td>
 			</tr>	
 			<tr>
 				<td>Type</td>
-				<td><input type="text" name="type" placeholder="Type" required/></td>
-			</tr>	
+				<td><input type="text" name="type" value="<?= $product['type']; ?>" required/></td>
+			</tr>
 			<tr>
 				<td>Fabriek</td>
 				<td>
-					<select name="factory_id" style="width: 200px">
-						<option value="0">Selecteer een fabriek</option>
+					<select name="factory_id" style="width: 14.7%">
 						<?php foreach($factories as $factory): ?>
-							<?php ($factory["id"] == $user["id"] ? $selected = "selected" : $selected = ""); ?>
+							<?php ($factory["id"] == $product["id"] ? $selected = "selected" : $selected = ""); ?>
 							<option value="<?= $factory["id"]; ?>" <?= $selected; ?>><?= $factory["factory"]; ?></option>
 						<?php endforeach; ?>
 					</select>
@@ -42,18 +43,23 @@
 			</tr>
 			<tr>
 				<td>Inkoopprijs</td>
-				<td><input type="text" name="buy_price" placeholder="Inkoopprijs"/></td>
+				<td><input type="text" name="buy_price" value="<?= $product['buy_price']; ?>" required	/></td>
 			</tr>
 			<tr>
 				<td>Verkoopprijs</td>
-				<td><input type="text" name="sell_price" placeholder="Verkoopprijs" required/></td>
-			</tr>
+				<td><input type="text" name="sell_price" value="<?= $product['sell_price']; ?>" required	/></td>
+			</tr>	
+			
 			<tr>
-				<td><input type="hidden" name="id" value=""/></td>
+				<td><input type="hidden" name="id" value="<?= $product['id']; ?>"/></td>
 				<td>
-					<div class="pure-button pure-button-primary save_button">
-						Opslaan
+					<div class="pure-button pure-button-primary edit_button">
+						Wijzigen
 					</div>
+					<span class="save_message">
+						<i class="fa fa-check-circle" style="color: green;"></i>
+						Opgeslagen!
+					</span>
 				</td>
 			</tr>
 		</tbody>
@@ -62,20 +68,19 @@
 
 <?php include("../base/footer.php"); ?>
 
-<script>
-	$(".save_button").on("click",function(){
-		link = "<?= $breadcrumb['module']['link'] ?>";
 
+<script>
+	$(".edit_button").on("click",function(){
 		$.post("../functions/products.php",{
-			action: "new_product",
+			action: "edit_product",
 			id : $("input[name='id']").val(),
 			product : $("input[name='product']").val(),
-			type: $("input[name='type'").val(),
-			factory_id: $("select[name='factory_id'] option:selected").val(),
+			type: $("input[name='type']").val(),
+			factory_id : $("select[name='factory_id'] option:selected").val(),
 			buy_price : $("input[name='buy_price']").val(),
 			sell_price : $("input[name='sell_price']").val(),
 		},function(data){
-			window.location = link;
+			show_save_message();
 		});
 	});
 </script>

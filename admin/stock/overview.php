@@ -45,7 +45,7 @@
 			        	<?php endif; ?>
 
 			        	<?php if($_SESSION["user"]["role_id"] == 1 && $product["id"] != "1"): ?>
-							<a href="#" class="pure-button pure-button-primary pure-button-small but_location_index button-delete-location delete_button" data-id="<?=$location['id'] ?>" data-name="<?= $location['name'] ?>" title="Verwijderen"><i class="fa fa-trash-o"></i></a>
+							<a href="#" class="pure-button pure-button-primary pure-button-small but_location_index button-delete-product delete_button" data-id="<?=$product['id'] ?>" data-name="<?= $product['product'] ?>" title="Verwijderen"><i class="fa fa-trash-o"></i></a>
 						<?php endif; ?>
 					</td>
 				</tr>
@@ -62,9 +62,9 @@
 
 	$(".delete_button").on("click",function(){
 		id = $(this).data("id");
-		locatie = $(this).data("locatie");
+		product = $(this).data("product");
 
-		$(".title").html(locatie);
+		$(".title").html(product);
 		$("input[name='deleted_id']").val(id);
 
 		$(".dialog").show();
