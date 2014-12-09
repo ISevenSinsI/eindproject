@@ -57,5 +57,4 @@
 
 				/* vaststellen relatie locatie */
 				FOREIGN KEY tweede(location_id) REFERENCES locations(id),
-				FOREIGN KEY derde(product_id) REFERENCES products(id)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
