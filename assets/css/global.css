@@ -186,7 +186,7 @@ table tfoot th {
 }
 
 table .column-id {
-	width: 50px;
+	width: 50px !important;
 }
 
 .dataTables_filter {

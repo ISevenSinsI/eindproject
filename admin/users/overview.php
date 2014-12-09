@@ -1,6 +1,7 @@
 <?php
 	include("../base/header.php");
 	require("../functions/users.php"); 
+	
 	$users = get_all_users();
 	session_start();
 ?>
@@ -13,7 +14,7 @@
 				<th><input data-column="3" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Voorvoegsel" /></th>
 				<th><input data-column="4" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Achternaam" /></th>
 				<th><input data-column="5" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Rol" /></th>
-				<th></th>
+				<th class="table_actions"></th>
 			</tr>
 	        <tr class="table_legend">
 	        	<th class="column_id">#</th>

@@ -17,7 +17,8 @@
 	<table class="pure-table pure-table-bordered pure-table-striped pure-form form form_overview">
 		<thead>
 			<tr>
-				<th colspan="2">Gegevens aanpassen</th>
+				<th>Gegevens aanpassen</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,7 +36,7 @@
 			</tr>
 			<tr>
 				<td>Achternaam</td>
-				<td><input type="text" name="last_name" value="<?= $user['last_name']; ?>" required/></td>
+				<td><input type="text" name="last_name" value="<?= $user['last_name']; ?>" required	/></td>
 			</tr>	
 			<tr>
 				<td>Rol</td>

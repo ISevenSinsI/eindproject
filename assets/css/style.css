@@ -10,7 +10,7 @@
 	text-align: center;
 }
 .content_inner input{
-	width: 200px;
+	width: 100%;
 }
 .login_error{
 	background: rgb(202, 60, 60);	
@@ -41,4 +41,13 @@
 }
 .save_message{
 	display: none;
+}
+.table_actions{
+	width: 13% !important;
+}
+.form_overview thead tr th:first-child{
+	width: 200px;
+}
+table .column-id {
+	width: 50px !important;
 }

@@ -15,7 +15,8 @@
 	<table class="pure-table pure-table-bordered pure-table-striped pure-form form form_overview">
 		<thead>
 			<tr>
-				<th colspan="2">Gegevens aanpassen</th>
+				<th>Gegevens aanpassen</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -79,7 +80,7 @@
 			prefix : $("input[name='prefix']").val(),
 			last_name : $("input[name='last_name']").val(),
 		},function(data){
-			// window.location = link;
+			window.location = link;
 		});
 	});
 </script>

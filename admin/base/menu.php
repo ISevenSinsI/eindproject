@@ -10,17 +10,8 @@
 <div class="menu-item first">
     <div class="menu-item-inner">
         <a class="pure-button secondary-button" href="../locations/overview.php">
-            <i class="fa fa-building-o fa-2x"></i>
+            <i class="fa fa-globe fa-2x"></i>
             <p>Locaties</p>
-        </a>
-    </div>
-</div>
-
-<div class="menu-item first">
-    <div class="menu-item-inner">
-        <a class="pure-button secondary-button" href="../products/overview.php">
-            <i class="fa fa-tag fa-2x"></i>
-            <p>Artikelen</p>
         </a>
     </div>
 </div>
@@ -36,9 +27,9 @@
 
 <div class="menu-item first">
     <div class="menu-item-inner">
-        <a class="pure-button secondary-button" href="../administration/">
-            <i class="fa fa-euro fa-2x"></i>
-            <p>Administratie</p>
+        <a class="pure-button secondary-button" href="../factories/overview.php">
+            <i class="fa fa-building-o fa-2x"></i>
+            <p>Fabrieken</p>
         </a>
     </div>
 </div>

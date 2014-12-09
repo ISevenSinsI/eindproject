@@ -29,7 +29,7 @@
 		 	case "users":			return "Gebruikers";	break;
 		 	case "locations":		return "Locaties";		break;
 		 	case "products":		return "Artikelen";		break;
-		 	case "administration":	return "Administratie";	break;
+		 	case "factories":		return "Fabrieken";		break;
 		 	case "stock":			return "Voorraad";		break;
 		 	case "overview.php": 	return "Overzicht";		break;
 		 	case "details.php": 	return "Details"; 		break;
