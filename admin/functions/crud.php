@@ -1,55 +1,66 @@
 <?php
-	// General Create, Read, Update, Delete functions
-	if(isSet($_POST["object"])){
-		if(isSet($_POST["action"])){
-			if($_POST["action"] == "create"){
+	$sql = "
+		/* Aanmaken tabel voorraad */
+		CREATE TABLE
+			`factories`(
+				`id` int(11) NOT NULL AUTO_INCREMENT,
+				`factory` varchar(32) NOT NULL,
+				`phone` varchar(32),
 
-			}
-			if($_POST["action"] == "edit"){
-			}
-			if($_POST["action"] == "delete"){
-				echo json_encode(delete_object($_POST));
-			}
-		}
-	}
+				/* Vaststellen primary key */
+				PRIMARY KEY(`id`)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1; 	
 
-	function delete_object($data){
- 		$db = login_sql();
+		/* Aanmaken tabel medewerkers */
+		CREATE TABLE
+			`users`(
+				`id` int(11) NOT NULL AUTO_INCREMENT,
+				`initials` varchar(32) NOT NULL,
+				`prefix` varchar(32),
+				`last_name` varchar(32) NOT NULL,
+				`username` varchar(32) NOT NULL,
+				`password` varchar(64) NOT NULL,
+				/* Vaststellen primary key */
+				PRIMARY KEY(`id`)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1; 
 
-		$datetime = date("Y-m-d H:i:s");
-		
-		$sql = "
-			UPDATE
-				`{$data["object"]}`
-			SET
-				`deleted` = '{$datetime}'
-			WHERE
-				`id` = '{$data['id']}'
-		";
+		/* Aanmaken tabel locaties */
+		CREATE TABLE
+			`locations`(
+				`id` int(11) NOT NULL AUTO_INCREMENT,
+				`location` varchar(32) NOT NULL,
 
-		
-		$query = mysqli_query($db, $sql);
+				/* vaststellen primary key */
+				PRIMARY KEY(`id`)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1; 
 
-	}
+		/* Aanmaken tabel producten */
+		CREATE TABLE
+			`products`(			
+				`id` int(11) NOT NULL AUTO_INCREMENT,
+				`product` varchar(32) NOT NULL,
+				`type` varchar(32), 
+				`factory_id` int(11) NOT NULL,
+				`buy_price` decimal(11,2) NOT NULL,
+				`sell_price` decimal(11,2) NOT NULL,
 
-	function debug($var,$die = false){
-		echo "<pre>";
-			print_r($var);
-		echo "</pre>";
+				/* Vaststellen primary key */
+				PRIMARY KEY(`id`),
+				/* vaststellen relatie fabrieken */
+				FOREIGN KEY eerste(factory_id) REFERENCES factories(id)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
-		if($die){
-			die();
-		}
-	}
+		/* Aanmaken tabel voorraad */
+		CREATE TABLE
+			`stock`( 
+				`location_id` int(11) NOT NULL,
+				`product_id` int(11) NOT NULL,
+				`amount` int(11),
 
-	function login_sql(){
-		$link = mysqli_connect('localhost', 'root', '', 'toolsforever');
+				/* vaststellen relatie locatie */
+				FOREIGN KEY tweede(location_id) REFERENCES locations(id),
+				FOREIGN KEY derde(product_id) REFERENCES products(id)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 
-		//check if connection is success
-		if(!$link){
-			die('Connect Error: ' . mysqli_connect_errno());
-		}
-		else{
-			return $link;
-		}
-	}
+	";
+?>
