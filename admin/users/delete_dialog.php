@@ -34,7 +34,7 @@
 				action: 'delete_user',
 				id: id,
 			},function(data){
-				window.location = window.location;
+				// window.location = window.location/;
 			});
 
 			return false;

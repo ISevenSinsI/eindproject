@@ -1,11 +1,14 @@
 <?php
     require("../functions/debug.php");
+    // require("../functions/crud.php");
+    $current_page = page_name();
+    $page_name = translate($current_page);
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ToolsForEver - Inloggen</title>
+    <title>ToolsForEver - <?php echo $page_name; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes">
