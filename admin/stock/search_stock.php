@@ -38,12 +38,15 @@
 	
 	<div class="pure-form pure-g search_result">	
 		<div class="pure-u-1-2">
+			<legend class="location_name"></legend>
 			<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 				<thead>
 					<tr style="color: white;">
 						<th>Product</th>
-						<th>Locatie</th>
-						<th>Aantal</th>
+						<th>Type</th>
+						<th>Fabriek</th>
+						<th>Verkoopprijs</th>
+						<th style="width: 300px;">Aantal</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -51,14 +54,24 @@
 						<td class="product_name">
 
 						</td>
-						<td class="location_name">
+						<td class="product_type">
+
+						</td>
+						<td class="factory">
+
+						</td>
+						<td class="product_sell_price">
 
 						</td>
 						<td>
-							<span class="amount">
-
+							<input type="text" name="amount" style="width: 100px" />
+							<input type="hidden" name="product_id" />
+							<input type="hidden" name="location_id" />
+							<i class="fa fa-save" style="float: right; margin-top: 5px;"></i>
+							<span class="save_message">
+								<i class="fa fa-check-circle" style="color: green;"></i>
+								Opgeslagen!
 							</span>
-							<i class="fa fa-save"></i>
 						</td>
 					</tr>
 				</tbody>
@@ -78,6 +91,23 @@
 		$(".send_search").on("click",function(){
 			send_search();
 		});
+
+		$(".fa-save").on("click",function(){
+			product_id = $("input[name='product_id']").val();
+			location_id = $("input[name='location_id']").val();
+			amount = $("input[name='amount']").val();
+
+			$.post("../functions/search.php",{
+				action: "change_stock",
+				product_id: product_id,
+				location_id: location_id,
+				amount: amount
+			},function(data){
+
+			});
+
+			show_save_message();
+		});	
 	});
 
 	function send_search(){
@@ -102,9 +132,17 @@
 			$(".search_selection").hide();
 
 			result = jQuery.parseJSON(data);
-			console.log(result);
 
-			$(".product_name").html(result[0]["product"]);
+			$("input[name='product_id']").val(result["product"]["id"]);
+			$("input[name='location_id']").val(result["location"]["id"]);
+			$(".product_name").html(result["product"]["name"]);
+			$(".product_type").html(result["product"]["type"]);
+			$(".product_sell_price").html('&euro; ' + result["product"]["sell_price"]);
+
+			$(".location_name").html(result["location"]["name"]);
+			$("input[name='amount']").val(result["amount"]);
+
+			$(".factory").html(result["factory"]);
 		});
 	}
 </script>

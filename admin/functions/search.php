@@ -6,6 +6,13 @@
 
 			echo json_encode(get_product_by_location($product_id, $location_id));
 		}
+		if($_POST["action"] == "change_stock"){
+			$product_id = $_POST["product_id"];
+			$location_id = $_POST["location_id"];
+			$amount = $_POST["amount"];
+
+			print_r(change_stock($product_id, $location_id, $amount));
+		}
 	}
 
 	function login_sql(){
@@ -70,6 +77,58 @@
 		return $data;
 	}	
 
+	function change_stock($product_id, $location_id, $amount){
+		$db = login_sql();
+
+		$sql = "
+			SELECT
+				*
+			FROM
+				`stock`
+			WHERE
+				`location_id` = '{$location_id}'
+			AND
+				`product_id` = '{$product_id}'
+		";	
+
+		$query = mysqli_query($db, $sql);
+
+		if($query->num_rows > 0){
+			$sql = "
+				UPDATE
+					`stock`
+				SET
+					`amount` = '{$amount}'
+				WHERE
+					`stock`.`location_id` = '{$location_id}'
+				AND
+					`stock`.`product_id` = '{$product_id}'
+			";
+
+			$query = mysqli_query($db, $sql);
+
+			return true;
+		} else {
+			$sql = "
+				INSERT INTO
+					`stock`(
+						`product_id`,
+						`location_id`,
+						`amount`
+					)
+				VALUES(
+						'{$product_id}',
+						'{$location_id}',
+						'{$amount}'
+					)
+			";
+
+			$query = mysqli_query($db, $sql);
+
+			return true;
+		}
+	}
+
 	function get_product_by_location($product_id, $location_id){
 		$db = login_sql();
 
@@ -77,7 +136,10 @@
 			SELECT
 				`amount`,
 				`products`.`product`,
-				`locations`.`location`
+				`products`.`type`,
+				`products`.`sell_price`,
+				`locations`.`location`,
+				`factories`.`factory`
 			FROM
 				`stock`
 			JOIN
@@ -88,6 +150,10 @@
 				`locations`
 			ON
 				`stock`.`location_id` = `locations`.`id`
+			JOIN
+				`factories`
+			ON
+				`products`.`factory_id` = `factories`.`id`
 			WHERE
 				`product_id` = '{$product_id}'
 			AND
@@ -98,27 +164,46 @@
 
 		if($query->num_rows > 0){
 			while($row = mysqli_fetch_assoc($query)){
-				$data[] = $row;
+				$data["product"]["id"] = $product_id;
+				$data["product"]["name"] = $row["product"];
+				$data["product"]["type"] = $row["type"];
+				$data["product"]["sell_price"] = number_format($row["sell_price"],2,",",".");
+				$data["amount"] = $row["amount"];
+				$data["location"]["id"] = $location_id;
+				$data["location"]["name"] = $row["location"];
+				$data["factory"] = $row["factory"];
 			}
 		} else {
 			$sql = "
 				SELECT
 					`products`.`product`,
-					`locations`.`location`
+					`products`.`type`,
+					`products`.`sell_price`,
+					`locations`.`location`,
+					`factories`.`factory` 
 				FROM
 					`products`,
-					`locations`
+					`locations`,
+					`factories`
 				WHERE
 					`products`.`id` = '{$product_id}'
 				AND
 					`locations`.`id` = '{$location_id}'
+				AND
+					`factories`.`id` = `products`.`factory_id`
 			";
+
 
 			$query = mysqli_query($db,$sql);
 
 			while($row = mysqli_fetch_assoc($query)){
-				$data["location"] = $row["location"];
-				$data["product"] = $row["product"];				
+				$data["product"]["id"] = $product_id;
+				$data["product"]["name"] = $row["product"];
+				$data["product"]["type"] = $row["type"];
+				$data["product"]["sell_price"] = number_format($row["sell_price"],2,",",".");
+				$data["location"]["id"] = $location_id;
+				$data["location"]["name"] = $row["location"];
+				$data["factory"] = $row["factory"];
 				$data["amount"] = 0;
 			}	
 		}
