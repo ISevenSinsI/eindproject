@@ -34,6 +34,15 @@
     </div>
 </div>
 
+<div class="menu-item first">
+    <div class="menu-item-inner">
+        <a class="pure-button secondary-button" href="../reports/overview.php">
+            <i class="fa fa-files-o fa-2x"></i>
+            <p>Rapportages</p>
+        </a>
+    </div>
+</div>
+
 <div class="menu-item last">
     <div class="menu-item-inner">
         <a class="pure-button secondary-button" href="../logout.php">

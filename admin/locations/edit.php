@@ -26,6 +26,10 @@
 				<td><input type="text" name="location" value="<?= $location['location']; ?>" /></td>
 			</tr>
 			<tr>
+				<td>Beschrijving</td>
+				<td><input type="text" name="description" value="<?= $location['description']; ?>" /></td>
+			</tr>
+			<tr>
 				<td><input type="hidden" name="id" value="<?= $location['id']; ?>"/></td>
 				<td>
 					<div class="pure-button pure-button-primary edit_button">
@@ -48,6 +52,7 @@
 			action: "edit_location",
 			id : $("input[name='id']").val(),
 			location : $("input[name='location']").val(),
+			description: $("input[name='description']").val(),
 		},function(data){
 			window.location = window.location;
 		});

@@ -31,6 +31,7 @@
 		 	case "products":		return "Artikelen";		break;
 		 	case "factories":		return "Fabrieken";		break;
 		 	case "stock":			return "Voorraad";		break;
+		 	case "reports":			return "Rapportages";	break;
 		 	case "overview.php": 	return "Overzicht";		break;
 		 	case "details.php": 	return "Details"; 		break;
 		 	case "edit.php":		return "Wijzigen";		break;

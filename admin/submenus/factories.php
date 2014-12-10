@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php
+if(!isset($_SESSION["user"])){
+	session_start();
+}
+?>
 <ul>
 	<li><a href="../factories"><i class="fa fa-building-o"></i> Fabrieken</a></li>
 	<?php if($_SESSION["user"]["role_id"] == 1): ?>

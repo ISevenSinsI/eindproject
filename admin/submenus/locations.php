@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php
+if(!isset($_SESSION["user"])){
+	session_start();
+}
+?>
 <ul>
 	<li><a href="../locations"><i class="fa fa-locations"></i> Locaties</a></li>
 	<?php if($_SESSION["user"]["role_id"] == 1): ?>

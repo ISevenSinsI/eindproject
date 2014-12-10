@@ -59,9 +59,8 @@
 		$db = login_sql();
 
 		$sql = "
-			SELECT
-				`locations`.`id`,
-				`locations`.`location`
+			SELECT *
+
 			FROM
 				`locations`
 			WHERE
@@ -84,7 +83,8 @@
 			UPDATE
 				`locations`
 			SET
-				`location`	= '{$data["location"]}'
+				`location`	= '{$data["location"]}',
+				`description` = '{$data["description"]}'
 			WHERE
 				`id` = '{$data["id"]}'
 		";
@@ -99,10 +99,12 @@
 		$sql = "
 			INSERT INTO
 				`locations`(
-					`location`
+					`location`,
+					`description`
 				)
 			VALUES (
-				'{$data["name"]}'
+				'{$data["name"]}',
+				'{$data["description"]}'
 			)
 		";
 

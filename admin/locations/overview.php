@@ -8,11 +8,13 @@
 			<tr class="pure-form">
 				<th class="column_id"><input data-column="0" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="#" /></th>
 				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Locatie" /></th>
+				<th><input data-column="2" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Beschrijving" /></th>
 				<th class="table_actions"></th>
 			</tr>
 	        <tr class="table_legend">
 	        	<th>#</th>
 	            <th>Locatie</th>
+	            <th>Beschrijing</th>
 	            <th>Acties</th>
 	        </tr>
 		</thead>
@@ -21,6 +23,7 @@
 				<tr>
 					<td><?= $location["id"]; ?></td>
 					<td><?= $location["location"]; ?></td>
+					<td><?= $location["description"]; ?></td>
 					<td>
 					 	<a href="details.php?id=<?= $location['id'] ?>" class="pure-button pure-button-primary pure-button-small but_location_index" title="Details">
 			          		<i class="fa fa-info-circle"></i>

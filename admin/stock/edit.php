@@ -72,6 +72,9 @@
 
 
 <script>
+$(document).ready(function(){
+	$("select[name='factory_id']").select2({width: '200px', allowClear: true, placeholder: "Selecteer een fabriek"});
+
 	$(".edit_button").on("click",function(){
 		$.post("../functions/products.php",{
 			action: "edit_product",
@@ -85,4 +88,5 @@
 			show_save_message();
 		});
 	});
+});
 </script>

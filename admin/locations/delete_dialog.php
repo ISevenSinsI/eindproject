@@ -15,7 +15,7 @@
                 </div>
 
                  <div class="pure-control-group dialog_control">
-                	<input type="text" name="deleted_id" value="0" />
+                	<input type="hidden" name="deleted_id" value="0" />
 	               	<div class="pure-button pure-button-primary pure-button dialog-submit">Ja</div>
 	               	<div class="pure-button pure-button-primary pure-button dialog-close">Nee</div>
                	</div>

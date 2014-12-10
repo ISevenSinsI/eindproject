@@ -1,7 +1,11 @@
 <?php 
 	include("../base/header.php");
 	require("../functions/factories.php"); 
-	session_start();
+
+    if(!isset($_SESSION["user"])){
+        session_start();
+    }
+
 
 	$id = $_GET["id"];
 	$factory = get_factory($id);

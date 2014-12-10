@@ -1,7 +1,10 @@
 <?php 
 	include("../base/header.php");
-	require("../functions/users.php"); 
-	session_start();
+	require("../functions/users.php");
+     
+	if(!isset($_SESSION["user"])){
+        session_start();
+    }
 
 	$id = $_GET["id"];
 	$user = get_user($id);

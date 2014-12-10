@@ -1,7 +1,10 @@
 <?php 
 	include("../base/header.php");
 	require("../functions/locations.php"); 
-	session_start();
+
+	if(!isset($_SESSION["user"])){
+        session_start();
+    }
 
 	$id = $_GET["id"];
 	$location = get_location($id);
@@ -25,7 +28,11 @@
             <tr>
                 <td>Locatie</td>
                 <td><?=$location["location"]?></td>
-            </tr>           
+            </tr>  
+            <tr>
+                <td>Beschrijving</td>
+                <td><?=$location["description"]?></td>
+            </tr>          
         </tbody>
     </table>
 </fieldset>

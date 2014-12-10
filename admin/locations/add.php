@@ -23,6 +23,10 @@
 				<td><input type="text" name="name" placeholder="Locatie" /></td>
 			</tr>
 			<tr>
+				<td>Beschrijving</td>
+				<td><input type="text" name="description" placeholder="Beschrijving" /></td>
+			</tr>
+			<tr>
 				<td><input type="hidden" name="id" value=""/></td>
 				<td>
 					<div class="pure-button pure-button-primary save_button">
@@ -46,6 +50,7 @@
 			action: "new_location",
 			id : $("input[name='id']").val(),
 			name : $("input[name='name']").val(),
+			description :$("input[name='description']").val(),
 		},function(data){
 			window.location = link;
 		});

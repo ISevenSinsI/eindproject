@@ -8,6 +8,7 @@
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="assets/css/template/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <!-- <link href="assets/css/template/fonts.css" rel="stylesheet" type="text/css" media="all" /> -->
 
 </head>
@@ -17,6 +18,13 @@
 	if(!isSet($_SESSION["user"])){
 		session_start();
 	}
+	include("admin/functions/locations.php"); 
+	$locations = get_all_locations();
+	
+	// echo "<pre>";
+	// print_r($locations);
+	// echo "</pre>";
+
 ?>
 
 
@@ -44,42 +52,18 @@
 			<h2>Onze filialen</h2>
 			<!-- <span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>  -->
 		</div>
+		<?php foreach($locations as $location){ ?>
 		<div class="column1">
 			<div class="box">
-				<img src="assets/img/locaties/locatie_1.png" alt="" class="image image-full" />
-				<h3>[Locatie 1 naam - Vanuit systeem]</h3>
+				<!-- <img src="assets/img/locaties/locatie_1.png" alt="" class="image image-full" /> -->
+				<i class="fa fa-home fa-4x"></i>
+				<h3><?php echo $location["location"]; ?></h3>
 				<p>
-				[Locatie 1 omschrijving - Vanuit systeem
-				</p>
-		</div>
-		</div>
-		<div class="column2">
-			<div class="box">
-				<img src="assets/img/locaties/locatie_2.png" alt="" class="image image-full" />
-				<h3>[Locatie 2 naam - Vanuit systeem]</h3>
-				<p>
-				[Locatie 2 omschrijving - Vanuit systeem
+				<?php echo $location["description"]; ?>
 				</p>
 			</div>
 		</div>
-		<div class="column3">
-			<div class="box">
-				<img src="assets/img/locaties/locatie_3.png" alt="" class="image image-full" />
-				<h3>[Locatie 3 naam - Vanuit systeem]</h3>
-				<p>
-				[Locatie 3 omschrijving - Vanuit systeem
-				</p>
-			</div>
-		</div>
-		<div class="column4">
-			<div class="box">
-				<img src="assets/img/locaties/locatie_4.png" alt="" class="image image-full" />
-				<h3>[Locatie 2 naam - Vanuit systeem]</h3>
-				<p>
-				[Locatie 2 omschrijving - Vanuit systeem
-				</p>
-			</div>
-		</div>
+		<?php } ?>
 	</div>
 </div>
 

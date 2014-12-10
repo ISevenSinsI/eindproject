@@ -75,6 +75,12 @@
 	}
 
 	function new_product($data){
+
+		/* safety */
+		// foreach($data as $value){
+		// 	htmlentities($value);
+		// }
+
 		$db = login_sql();
 
 		$sql = "
@@ -87,7 +93,6 @@
 					`sell_price`
 				)
 			VALUES (
-				'{$data["product"]}',
 				'{$data["type"]}',
 				'{$data["factory_id"]}',
 				'{$data["buy_price"]}',
