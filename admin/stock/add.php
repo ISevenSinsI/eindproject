@@ -63,6 +63,9 @@
 <?php include("../base/footer.php"); ?>
 
 <script>
+$(document).ready(function(){
+	$("select[name='factory_id']").select2({width: '200px', allowClear: true, placeholder: "Selecteer een fabriek"});
+
 	$(".save_button").on("click",function(){
 		link = "<?= $breadcrumb['module']['link'] ?>";
 
@@ -78,4 +81,5 @@
 			window.location = link;
 		});
 	});
+});
 </script>

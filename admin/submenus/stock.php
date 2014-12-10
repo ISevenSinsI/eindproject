@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php
+if(!isset($_SESSION["user"])){
+	session_start();
+}
+?>
 <ul>
 	<li><a href="../products"><i class="fa fa-tag"></i> Artikelen</a></li>
 	<?php if($_SESSION["user"]["role_id"] == 1): ?>

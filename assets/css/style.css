@@ -10,6 +10,9 @@
 	text-align: center;
 }
 .content_inner input{
+	width: 200px;
+}
+.datatable input{
 	width: 100%;
 }
 .login_error{
@@ -43,7 +46,7 @@
 	display: none;
 }
 .table_actions{
-	width: 13% !important;
+	width: 15% !important;
 }
 .form_overview thead tr th:first-child{
 	width: 200px;
@@ -51,6 +54,6 @@
 table .column-id {
 	width: 50px !important;
 }
-.pure-button-small{
+/*.pure-button-small{
 	margin-left:5px;
-}
+}*/
