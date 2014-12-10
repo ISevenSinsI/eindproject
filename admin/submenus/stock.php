@@ -4,7 +4,7 @@ if(!isset($_SESSION["user"])){
 }
 ?>
 <ul>
-	<li><a href="../products"><i class="fa fa-tag"></i> Artikelen</a></li>
+	<li><a href="overview.php"><i class="fa fa-tag"></i> Artikelen</a></li>
 	<?php if($_SESSION["user"]["role_id"] == 1): ?>
 		<li><a href="add.php"><i class="fa fa-plus"></i> Toevoegen</a></li>
 	<?php endif; ?>

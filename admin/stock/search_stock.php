@@ -38,7 +38,7 @@
 	
 	<div class="pure-form pure-g search_result">	
 		<div class="pure-u-1-2">
-			<legend class="location_name"></legend>
+			<h2 class="location_name">Locatie</h2>
 			<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 				<thead>
 					<tr style="color: white;">
@@ -67,7 +67,7 @@
 							<input type="text" name="amount" style="width: 100px" />
 							<input type="hidden" name="product_id" />
 							<input type="hidden" name="location_id" />
-							<i class="fa fa-save" style="float: right; margin-top: 5px;"></i>
+							<i class="fa fa-save" style="float: right; margin-top: 5px; cursor:pointer"></i>
 							<span class="save_message">
 								<i class="fa fa-check-circle" style="color: green;"></i>
 								Opgeslagen!
@@ -129,8 +129,6 @@
 			product_id: product_id,
 			location_id: location_id
 		},function(data){
-			$(".search_selection").hide();
-
 			result = jQuery.parseJSON(data);
 
 			$("input[name='product_id']").val(result["product"]["id"]);

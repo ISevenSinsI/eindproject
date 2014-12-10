@@ -10,8 +10,9 @@
 				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Product" /></th>
 				<th><input data-column="2" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Type" /></th>
 				<th><input data-column="3" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Fabriek" /></th>
-				<th><input data-column="4" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Inkoopprijs" /></th>
-				<th><input data-column="5" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Verkoopprijs" /></th>
+				<th><input data-column="4" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Minimum voorraad" /></th>
+				<th><input data-column="5" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Inkoopprijs" /></th>
+				<th><input data-column="6" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Verkoopprijs" /></th>
 				<th class="table_actions"></th>
 			</tr>
 	        <tr class="table_legend">
@@ -19,6 +20,7 @@
 	            <th>Product</th>
 	            <th>Type</th>
 	            <th>Fabriek</th>
+	            <th>Min. Voorraad</th>
 	            <th>Inkoopprijs</th>
 	            <th>Verkoopprijs</th>
 	            <th>Acties</th>
@@ -30,9 +32,10 @@
 					<td><?= $product["id"]; ?></td>
 					<td><?= $product["product"]; ?></td>
 					<td><?= $product["type"]; ?></td>
-					<td><?= $product["factory_id"]; ?></td>
-					<td><?= $product["buy_price"]; ?></td>
-					<td><?= $product["sell_price"]; ?></td>
+					<td><?= $product["factory"]; ?></td>
+					<td><?= number_format($product["minimum_stock"],0,",","."); ?></td>
+					<td>&euro; <?= number_format($product["buy_price"],2,",","."); ?></td>
+					<td>&euro; <?= number_format($product["sell_price"],2,",","."); ?></td>
 
 					<td>
 					 	<a href="details.php?id=<?= $product['id'] ?>" class="pure-button pure-button-primary pure-button-small but_user_index" title="Details">
