@@ -21,6 +21,7 @@
 	            <th>Fabriek</th>
 	            <th>Inkoopprijs</th>
 	            <th>Verkoopprijs</th>
+	            <th>Acties</th>
 	        </tr>
 		</thead>
 		<tbody>
@@ -44,7 +45,7 @@
 			          		</a>
 			        	<?php endif; ?>
 
-			        	<?php if($_SESSION["user"]["role_id"] == 1 && $product["id"] != "1"): ?>
+			        	<?php if($_SESSION["user"]["role_id"] == 1): ?>
 							<a href="#" class="pure-button pure-button-primary pure-button-small but_location_index button-delete-product delete_button" data-id="<?=$product['id'] ?>" data-name="<?= $product['product'] ?>" title="Verwijderen"><i class="fa fa-trash-o"></i></a>
 						<?php endif; ?>
 					</td>

@@ -1,5 +1,7 @@
 <?php
-	session_start();
+	if(!isset($_SESSION["user"])){
+		session_start();
+	}	
 	if($_SESSION["user"]["role_id"] != 1){
 		echo "Onvoldoende rechten.<br />";
 		die();
