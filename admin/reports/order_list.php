@@ -12,17 +12,17 @@
 	// d($data);
 ?>
 
-<table class="stock_value pure-table">
-	<?php foreach($data as $location): ?>
+<?php foreach($data as $location): ?>
+	<table class="stock_value pure-table">
 		<tr>
 			<th colspan="5">Locatie <?= $location["location_name"]; ?></th>
 		</tr>
 		<tr class="table_legend">
-			<th>Product</th>
-			<th>Type</th>
-			<th>Fabriek</th>
-			<th>Minimum aantal</th>
-			<th>Aantal te bestellen</th>
+			<th class="table_actions">Product</th>
+			<th class="table_actions">Type</th>
+			<th class="table_actions">Fabriek</th>
+			<th class="table_actions">Minimum aantal</th>
+			<th class="table_actions">Aantal te bestellen</th>
 		</tr>
 		<?php foreach($location["products"] as $product): ?>
 			<tr>
@@ -33,5 +33,6 @@
 				<td><?= $product["to_order"]; ?></td>
 			</tr>
 		<?php endforeach; ?>
-	<?php endforeach; ?>
-</table>
+	</table>
+	<br />
+<?php endforeach; ?>

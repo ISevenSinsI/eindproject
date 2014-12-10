@@ -20,13 +20,13 @@
 			<th colspan="7">Locatie <?php echo $location["name"]; ?> </th>
 		</tr>
 		<tr class="table_legend">
-			<th>Product </th>
-			<th>Type </th>
-			<th>Fabriek </th>
-			<th>Aantal </th>
-			<th>Prijs </th>
-			<th>Waarde inkoop </th>
-			<th>Waarde verkoop </th>
+			<th class="table_actions">Product </th>
+			<th class="table_actions">Type </th>
+			<th class="table_actions">Fabriek </th>
+			<th class="table_actions">Aantal </th>
+			<th class="table_actions">Prijs </th>
+			<th class="table_actions">Waarde inkoop </th>
+			<th class="table_actions">Waarde verkoop </th>
 		</tr>
 		<?php foreach($location["products"] as $product): ?>
 			<tr>

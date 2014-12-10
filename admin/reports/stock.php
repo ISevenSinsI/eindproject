@@ -15,20 +15,20 @@
 ?>
 
 
-<table class="stock_value">
-<?php foreach($data["locations"] as $location){ ?>
-	<tr>
-		<th colspan="7">Locatie <?php echo $location["name"]; ?> </th>
-	</tr>
-	<tr>
-		<th>Product </th>
-		<th>Type </th>
-		<th>Fabriek </th>
-		<th>Aantal </th>
-		<th>Inkoopprijs </th>
-		<th>Verkoopprijs</th>
-	</tr>
-	<?php foreach($location["products"] as $product): ?>
+<?php foreach($data["locations"] as $location): ?>
+	<table class="stock_value pure-table">
+		<tr>
+			<th colspan="7">Locatie <?php echo $location["name"]; ?> </th>
+		</tr>
+		<tr class="table_legend">
+			<th class="table_actions">Product </th>
+			<th class="table_actions">Type </th>
+			<th class="table_actions">Fabriek </th>
+			<th class="table_actions">Aantal </th>
+			<th class="table_actions">Inkoopprijs </th>
+			<th class="table_actions">Verkoopprijs</th>
+		</tr>
+		<?php foreach($location["products"] as $product): ?>
 			<tr>
 				<td> <?= $product["name"]; ?> </td>
 				<td> <?= $product["type"]; ?> </td>
@@ -38,8 +38,5 @@
 				<td> &euro;<?= number_format($product["sell_price"], 2,",","."); ?> </td>
 			</tr>
 		<?php endforeach; ?>
-<?php } ?>
-
-
-
-</table>
+	</table><br />
+<?php endforeach; ?>
