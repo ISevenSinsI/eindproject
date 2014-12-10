@@ -36,11 +36,11 @@
 		
 		$query = mysqli_query($db,$sql);
 
-		$data = array();
+		$data = array("total_buy_price" => 0, "total_sell_price" => 0);
 
 		while($row = mysqli_fetch_assoc($query)){
-			if(!isSet($data[$row["location_id"]])){
-				$data[$row["location_id"]] = array(
+			if(!isSet($data["locations"][$row["location_id"]])){
+				$data["locations"][$row["location_id"]] = array(
 					"name" => $row["location"],
 					"total_buy_price" => 0,
 					"total_sell_price" => 0,
@@ -48,36 +48,29 @@
  				);
 			}
 
-			if(!isSet($data[$row["location_id"]]["products"][$row["product_id"]])){
-				$data[$row["location_id"]]["products"][$row["product_id"]] = array(
+			if(!isSet($data["locations"][$row["location_id"]]["products"][$row["product_id"]])){
+				$data["locations"][$row["location_id"]]["products"][$row["product_id"]] = array(
 					"name"	=> $row["product"],
 					"type"	=>	$row["type"],
 					"sell_price" => $row["sell_price"],
 					"buy_price" => $row["buy_price"],
 					"amount"	=>	$row["amount"],
 					"factory" 	=> 	$row["factory"],
-
 					"total_sell_price" => 0,
 					"total_buy_price" => 0,
 				);				
 			}
 
-			$total_buy_price = $row["amount"] * $row["buy_price"];
-			$total_sell_price = $row["amount"] * $row["sell_price"];
+			$data["total_buy_price"] += $row["amount"] * $row["buy_price"];
+			$data["total_sell_price"] += $row["amount"] * $row["sell_price"];
 
-			$data[$row["location_id"]]["total_buy_price"] += $total_buy_price;
-			$data[$row["location_id"]]["total_sell_price"] += $total_sell_price;
+			$data["locations"][$row["location_id"]]["total_buy_price"] += $row["amount"] * $row["buy_price"];
+			$data["locations"][$row["location_id"]]["total_sell_price"] += $row["amount"] * $row["sell_price"];
 
-			$data[$row["location_id"]]["products"][$row["product_id"]]["total_buy_price"] += $total_buy_price;
-			$data[$row["location_id"]]["products"][$row["product_id"]]["total_sell_price"] += $total_sell_price;
+			$data["locations"][$row["location_id"]]["products"][$row["product_id"]]["total_buy_price"] = $row["amount"] * $row["buy_price"];
+			$data["locations"][$row["location_id"]]["products"][$row["product_id"]]["total_sell_price"] = $row["amount"] * $row["sell_price"];
 		}
-			
-
-			echo "<pre>";
-			print_r($data);
-			echo "</pre>";
-			die;
-
+		
 		return $data;
 	}
 	
