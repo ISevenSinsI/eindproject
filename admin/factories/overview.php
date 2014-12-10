@@ -2,7 +2,6 @@
 	include("../base/header.php");
 	require("../functions/factories.php"); 
 	$factories = get_all_factories();
-	session_start();
 ?>
 	<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 		<thead>

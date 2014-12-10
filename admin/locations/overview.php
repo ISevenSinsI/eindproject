@@ -2,7 +2,6 @@
 	include("../base/header.php");
 	require("../functions/locations.php"); 
 	$locations = get_all_locations();
-	session_start();
 ?>
 	<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 		<thead>

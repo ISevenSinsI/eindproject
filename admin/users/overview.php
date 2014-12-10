@@ -3,7 +3,6 @@
 	require("../functions/users.php"); 
 	
 	$users = get_all_users();
-	session_start();
 ?>
 	<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 		<thead>

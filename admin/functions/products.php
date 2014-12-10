@@ -48,7 +48,6 @@
 			$data[$row["id"]]["product"] = $row["product"];
 		}
 
-
 		return $data;
 	}
 

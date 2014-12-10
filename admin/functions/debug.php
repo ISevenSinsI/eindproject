@@ -35,6 +35,7 @@
 		 	case "details.php": 	return "Details"; 		break;
 		 	case "edit.php":		return "Wijzigen";		break;
 		 	case "add.php":			return "Toevoegen";		break;
+		 	case "search_stock.php": return "Voorraad zoeken"; break;
 		 }
 	}
 
