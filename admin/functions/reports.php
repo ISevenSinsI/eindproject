@@ -79,11 +79,28 @@
 		$db = login_sql();
 
 		$sql = "
-				SELECT `products`.*, `stock`.*
-				FROm `products`
-				LEFT JOIN `stock`
-				ON `products`.id = `stock`.product_id
-				WHERE `stock`.amount < `products`.minimum_stock";
+			SELECT 
+				`products`.*, 
+				`stock`.*,
+				`factories`.`factory`,
+				`locations`.`location`
+			FROM
+				`products`
+			LEFT JOIN 
+				`stock`
+			ON 
+				`products`.id = `stock`.product_id
+			JOIN
+				`factories` 
+			ON
+				`products`.`factory_id` = `factories`.`id`
+			JOIN
+				`locations`
+			ON
+				`stock`.`location_id` = `locations`.`id`
+			WHERE 
+				`stock`.amount < `products`.minimum_stock
+		";
 	
 
 		$query = mysqli_query($db,$sql);
@@ -91,13 +108,17 @@
 		$data = array();
 
 		while($row = mysqli_fetch_assoc($query)){
-
+			$data[$row["location_id"]]["location_name"] = $row["location"];
+			$data[$row["location_id"]]["products"][$row["product_id"]] = array(
+				"name" => $row["product"],
+				"type" => $row["type"],
+				"factory" => $row["factory"],
+				"minimum_stock" => $row["minimum_stock"],
+				"to_order" => $row["minimum_stock"] - $row["amount"],
+			);
 		}
 		
 		return $data;
 	}
 	
-
-
-
 ?>

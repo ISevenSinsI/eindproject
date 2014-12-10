@@ -14,13 +14,12 @@
 	//p($data);
 ?>
 
-<table class="stock_value">
+<table class="stock_value pure-table">
 	<?php foreach($data["locations"] as $location): ?> 
 		<tr>
 			<th colspan="7">Locatie <?php echo $location["name"]; ?> </th>
 		</tr>
-
-		<tr>
+		<tr class="table_legend">
 			<th>Product </th>
 			<th>Type </th>
 			<th>Fabriek </th>

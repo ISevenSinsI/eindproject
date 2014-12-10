@@ -73,3 +73,9 @@ table .column-id {
 .stock_value .total_location{
 	text-align: right;
 }
+.table_legend{
+	font-size: 11px;
+}
+.table_legend th{
+	color: #cecece;
+}
