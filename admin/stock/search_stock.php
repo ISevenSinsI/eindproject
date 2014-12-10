@@ -37,14 +37,13 @@
 
 	
 	<div class="pure-form pure-g search_result">	
-		<div class="pure-u-1">
+		<div class="pure-u-1-2">
 			<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 				<thead>
 					<tr style="color: white;">
 						<th>Product</th>
 						<th>Locatie</th>
 						<th>Aantal</th>
-						<th>Actie</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -105,7 +104,7 @@
 			result = jQuery.parseJSON(data);
 			console.log(result);
 
-			$(".product_name").html(result["product"]);
+			$(".product_name").html(result[0]["product"]);
 		});
 	}
 </script>

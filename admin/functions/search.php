@@ -95,9 +95,6 @@
 		";
 
 		$query = mysqli_query($db,$sql);
-		$data = array();
-
-
 
 		if($query->num_rows > 0){
 			while($row = mysqli_fetch_assoc($query)){

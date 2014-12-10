@@ -8,10 +8,10 @@
 			<tr class="pure-form">
 				<th class="column_id"><input data-column="0" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="#" /></th>
 				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Product" /></th>
-				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Type" /></th>
-				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Fabriek" /></th>
-				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Inkoopprijs" /></th>
-				<th><input data-column="1" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Verkoopprijs" /></th>
+				<th><input data-column="2" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Type" /></th>
+				<th><input data-column="3" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Fabriek" /></th>
+				<th><input data-column="4" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Inkoopprijs" /></th>
+				<th><input data-column="5" class="datatable-filter" type="text" class="table-filter" name="search[]" placeholder="Verkoopprijs" /></th>
 				<th class="table_actions"></th>
 			</tr>
 	        <tr class="table_legend">
@@ -35,18 +35,18 @@
 					<td><?= $product["sell_price"]; ?></td>
 
 					<td>
-					 	<a href="details.php?id=<?= $product['id'] ?>" class="pure-button pure-button-primary pure-button-small but_product_index" title="Details">
+					 	<a href="details.php?id=<?= $product['id'] ?>" class="pure-button pure-button-primary pure-button-small but_user_index" title="Details">
 			          		<i class="fa fa-info-circle"></i>
 			        	</a>
 
 			       		<?php if($_SESSION["user"]["role_id"] == 1): ?>
-			          		<a href="edit.php?id=<?=$product["id"]?>" class="pure-button pure-button-primary pure-button-small but_location_index" title="Bewerken">
+			          		<a href="edit.php?id=<?=$product["id"]?>" class="pure-button pure-button-primary pure-button-small but_user_index" title="Bewerken">
 			            		<i class="fa fa-pencil"></i>
 			          		</a>
 			        	<?php endif; ?>
 
 			        	<?php if($_SESSION["user"]["role_id"] == 1): ?>
-							<a href="#" class="pure-button pure-button-primary pure-button-small but_location_index button-delete-product delete_button" data-id="<?=$product['id'] ?>" data-name="<?= $product['product'] ?>" title="Verwijderen"><i class="fa fa-trash-o"></i></a>
+							<a href="#" class="pure-button pure-button-primary pure-button-small but_user_index button-delete-product delete_button" data-id="<?=$product['id'] ?>" data-name="<?= $product['product'] ?>" title="Verwijderen"><i class="fa fa-trash-o"></i></a>
 						<?php endif; ?>
 					</td>
 				</tr>
