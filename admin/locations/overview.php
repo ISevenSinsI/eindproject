@@ -35,7 +35,7 @@
 			          		</a>
 			        	<?php endif; ?>
 
-			        	<?php if($_SESSION["user"]["role_id"] == 1 && $location["id"] != "1"): ?>
+			        	<?php if($_SESSION["user"]["role_id"] == 1): ?>
 							<a href="#" class="pure-button pure-button-primary pure-button-small but_location_index button-delete-location delete_button" data-id="<?=$location['id'] ?>" data-name="<?= $location['name'] ?>" title="Verwijderen"><i class="fa fa-trash-o"></i></a>
 						<?php endif; ?>
 					</td>
@@ -61,7 +61,7 @@
 		$(".dialog").show();
 
 		return false;
-	})
+	});
 </script>
 
 <?php include("delete_dialog.php"); ?>

@@ -34,7 +34,7 @@ $(function(){
 				action: 'delete_location',
 				id: id
 			},function(data){
-				// window.location = window.location/;
+				window.location = window.location;
 			});
 
 			return false;

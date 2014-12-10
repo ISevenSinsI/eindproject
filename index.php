@@ -46,24 +46,24 @@
 </div>
 
 
-<div id="wrapper3">
-	<div id="portfolio" class="container">
+<div id="wrapper3" class="pure-g">
+	<div id="portfolio" class="container pure-u-1">
 		<div class="title">
 			<h2>Onze filialen</h2>
 			<!-- <span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>  -->
 		</div>
-		<?php foreach($locations as $location){ ?>
-		<div class="column1">
-			<div class="box">
-				<!-- <img src="assets/img/locaties/locatie_1.png" alt="" class="image image-full" /> -->
-				<i class="fa fa-home fa-4x"></i>
-				<h3><?php echo $location["location"]; ?></h3>
-				<p>
-				<?php echo $location["description"]; ?>
-				</p>
+		<?php foreach($locations as $location): ?>
+			<div class="column1 pure-u-1-4" style="color: rgba(0,0,0,0.5); text-align: center; height: 175px;">
+					<!-- <img src="assets/img/locaties/locatie_1.png" alt="" class="image image-full" /> -->
+				<div class="pure-u-1" style="text-align: center;">
+					<i class="fa fa-home fa-4x" ></i>
+				</div>
+				<h3 style="text-align: center;"><?= $location["location"]; ?></h3>
+				<div style="width: 250px;">
+					<?= $location["description"]; ?>
+				</div>
 			</div>
-		</div>
-		<?php } ?>
+		<?php endforeach; ?>
 	</div>
 </div>
 

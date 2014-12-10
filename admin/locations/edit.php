@@ -35,6 +35,10 @@
 					<div class="pure-button pure-button-primary edit_button">
 						Wijzigen
 					</div>
+					<span class="save_message">
+						<i class="fa fa-check-circle" style="color: green;"></i>
+						Opgeslagen!
+					</span>
 				</td>
 			</tr>	
 		</tbody>
@@ -54,7 +58,7 @@
 			location : $("input[name='location']").val(),
 			description: $("input[name='description']").val(),
 		},function(data){
-			window.location = window.location;
+			show_save_message();
 		});
 	});
 </script>

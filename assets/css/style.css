@@ -10,7 +10,7 @@
 	text-align: center;
 }
 .content_inner input{
-	width: 100%;
+	width: 200px;
 }
 .login_error{
 	background: rgb(202, 60, 60);	
@@ -84,4 +84,7 @@ table .column-id {
 
 .pure-table td, .pure-table th{
 	padding: 6px 5px !important;
+}
+#datatable thead tr th input{
+	width: 100%;
 }

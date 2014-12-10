@@ -176,8 +176,6 @@
 			)
 		";
 
-		;
-
 		$query = mysqli_query($db,$sql);
 
 		return true;

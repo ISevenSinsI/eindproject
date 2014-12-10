@@ -83,6 +83,9 @@
 
 		$db = login_sql();
 
+		$buy_price = str_replace(",",".",$data["buy_price"]);
+		$sell_price = str_replace(",",".",$data["sell_price"]);
+
 		$sql = "
 			INSERT INTO
 				`products`(
@@ -98,17 +101,45 @@
 				'{$data["type"]}',
 				'{$data["factory_id"]}',
 				'{$data["minimum_stock"]}',
-				'{$data["buy_price"]}',
-				'{$data["sell_price"]}'
+				'{$buy_price}',
+				'{$sell_price}'
 			)
 		";
 
-		$query = mysqli_query($db,$sql);
-
-		
+		$query = mysqli_query($db,$sql);		
 
 		return true;
 	}
+
+
+	function get_all_locations(){
+		$db = login_sql();
+
+		$sql = "
+			SELECT *
+				
+			FROM
+				`locations`
+			WHERE NOT
+				`locations`.`deleted`
+		";
+
+		// print_r($sql);
+		// die;
+		
+		$query = mysqli_query($db,$sql);
+
+		$data = array();
+
+		while($row = mysqli_fetch_assoc($query)){
+			$data[$row["id"]] = $row;
+			$data[$row["id"]]["location"] = $row["location"];
+		}
+
+
+		return $data;
+	}
+
 
 	function delete_product($id){
 		$db = login_sql();

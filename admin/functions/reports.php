@@ -101,9 +101,6 @@
 			WHERE 
 				`stock`.amount < `products`.minimum_stock
 		";
-	
-
-		$query = mysqli_query($db,$sql);
 
 		$data = array();
 
