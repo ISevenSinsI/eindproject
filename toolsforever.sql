@@ -2,10 +2,10 @@
 -- version 4.1.4
 -- http://www.phpmyadmin.net
 --
--- Machine: 127.0.0.1
--- Gegenereerd op: 09 dec 2014 om 22:06
--- Serverversie: 5.6.15-log
--- PHP-versie: 5.5.8
+-- Host: 127.0.0.1
+-- Generation Time: Dec 10, 2014 at 01:16 PM
+-- Server version: 5.6.15-log
+-- PHP Version: 5.5.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Databank: `toolsforever`
+-- Database: `toolsforever`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `ci_sessions`
+-- Table structure for table `ci_sessions`
 --
 
 CREATE TABLE IF NOT EXISTS `ci_sessions` (
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Gegevens worden uitgevoerd voor tabel `ci_sessions`
+-- Dumping data for table `ci_sessions`
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `factories`
+-- Table structure for table `factories`
 --
 
 CREATE TABLE IF NOT EXISTS `factories` (
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `factories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Gegevens worden uitgevoerd voor tabel `factories`
+-- Dumping data for table `factories`
 --
 
 INSERT INTO `factories` (`id`, `factory`, `phone`, `deleted`) VALUES
@@ -69,30 +69,33 @@ INSERT INTO `factories` (`id`, `factory`, `phone`, `deleted`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `locations`
+-- Table structure for table `locations`
 --
 
 CREATE TABLE IF NOT EXISTS `locations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `location` varchar(32) NOT NULL,
   `deleted` int(1) DEFAULT '0',
+  `description` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Gegevens worden uitgevoerd voor tabel `locations`
+-- Dumping data for table `locations`
 --
 
-INSERT INTO `locations` (`id`, `location`, `deleted`) VALUES
-(1, 'Rotterdam', 0),
-(2, 'Almere', 0),
-(3, 'Eindhoven', 0),
-(4, 'Vissers', 0);
+INSERT INTO `locations` (`id`, `location`, `deleted`, `description`) VALUES
+(1, 'Rotterdam', 0, 'Onze prachtlocatie aan de haven is mooi '),
+(2, 'Almere', 0, 'Onze prachtlocatie in Almere is mooi '),
+(3, 'Eindhoven', 0, 'EINDHOVEEE! EINDHOVEEEEE! EINDHOVEEEEEEE!'),
+(4, 'Vissers', 1, ''),
+(5, 'Errup', 1, ''),
+(6, 'Erruuupppp', 0, 'Center of the universe');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE IF NOT EXISTS `products` (
@@ -105,23 +108,24 @@ CREATE TABLE IF NOT EXISTS `products` (
   `deleted` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `eerste` (`factory_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
--- Gegevens worden uitgevoerd voor tabel `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `product`, `type`, `factory_id`, `buy_price`, `sell_price`, `deleted`) VALUES
-(1, 'Boormachine', 'XM-1022', 1, '40.00', '60.00', 0),
+(1, 'Boormachine', 'XM-1022', 2, '40.00', '60.00', 0),
 (2, 'Hamer', 'MX-2011', 2, '15.00', '70.00', 0),
 (3, 'Schroevendraaier', '2020-MM', 1, '23.00', '55.00', 0),
-(4, 'd', 'd', 2, '0.00', '0.00', 0),
-(5, 'Fiets', 'aids', 2, '40.00', '50.00', 0);
+(4, 'd', 'd', 2, '0.00', '0.00', 1),
+(5, 'Fiets', 'aids', 2, '40.00', '50.00', 1),
+(7, 'Fiets', 'X-2211', 1, '40.00', '50.00', 1);
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
@@ -134,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Gegevens worden uitgevoerd voor tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `created`, `updated`, `deleted`) VALUES
@@ -145,7 +149,7 @@ INSERT INTO `roles` (`id`, `name`, `created`, `updated`, `deleted`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `stock`
+-- Table structure for table `stock`
 --
 
 CREATE TABLE IF NOT EXISTS `stock` (
@@ -156,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `stock` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Gegevens worden uitgevoerd voor tabel `stock`
+-- Dumping data for table `stock`
 --
 
 INSERT INTO `stock` (`location_id`, `product_id`, `amount`) VALUES
@@ -168,7 +172,7 @@ INSERT INTO `stock` (`location_id`, `product_id`, `amount`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -184,26 +188,26 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Gegevens worden uitgevoerd voor tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `role_id`, `initials`, `prefix`, `last_name`, `username`, `password`, `deleted`) VALUES
 (1, 1, 'J', 'De', 'Man', 'Jorie', '3c649185ca41b2c53060c8266b0845206b4ab363', 0),
-(2, 1, 'R', '', 'Vissers', 'Ruud', 'b0ea5de4163aab11169c3edc780644cfc79dd7b20', 0),
+(2, 3, 'R', '', 'Vissers', 'Ruud', '4317b620a5cdb210fb92123281588ec4b30a74e7', 0),
 (3, 0, '', '', '', '', '2356e59638c3bc00ed8b72d433dbf0b7ecedc536', 0);
 
 --
--- Beperkingen voor gedumpte tabellen
+-- Constraints for dumped tables
 --
 
 --
--- Beperkingen voor tabel `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`factory_id`) REFERENCES `factories` (`id`);
 
 --
--- Beperkingen voor tabel `stock`
+-- Constraints for table `stock`
 --
 ALTER TABLE `stock`
   ADD CONSTRAINT `stock_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`);
