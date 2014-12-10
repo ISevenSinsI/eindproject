@@ -9,10 +9,10 @@
 	margin-right: auto;
 	text-align: center;
 }
-.content_inner input{
+/*.content_inner input{
 	width: 200px;
-}
-.datatable input{
+}*/
+.table input{
 	width: 100%;
 }
 .login_error{
