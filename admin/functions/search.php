@@ -4,7 +4,7 @@
 			$product_id = $_POST["product_id"];
 			$location_id = $_POST["location_id"];
 
-			$result = get_product_by_location($product_id, $location_id);
+			echo json_encode(get_product_by_location($product_id, $location_id));
 		}
 	}
 
@@ -97,12 +97,35 @@
 		$query = mysqli_query($db,$sql);
 		$data = array();
 
-		// if( > 0){
-			// while($row = mysqli_fetch_assoc($query)){
-			// 	$data[] = $row;
-			// }
-		// }
 
-		echo $sql;
+
+		if($query->num_rows > 0){
+			while($row = mysqli_fetch_assoc($query)){
+				$data[] = $row;
+			}
+		} else {
+			$sql = "
+				SELECT
+					`products`.`product`,
+					`locations`.`location`
+				FROM
+					`products`,
+					`locations`
+				WHERE
+					`products`.`id` = '{$product_id}'
+				AND
+					`locations`.`id` = '{$location_id}'
+			";
+
+			$query = mysqli_query($db,$sql);
+
+			while($row = mysqli_fetch_assoc($query)){
+				$data["location"] = $row["location"];
+				$data["product"] = $row["product"];				
+				$data["amount"] = 0;
+			}	
+		}
+
+		return $data;
 	}
 ?>

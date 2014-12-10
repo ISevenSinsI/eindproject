@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php 
+if(!isSet($_SESSION["user"])){
+	session_start();	
+}
+?>
+
 <ul>
 	<li><a href="../users"><i class="fa fa-users"></i> Gebruikers</a></li>
 	<?php if($_SESSION["user"]["role_id"] == 1): ?>

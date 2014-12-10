@@ -43,14 +43,11 @@
 	display: none;
 }
 .table_actions{
-	width: 13% !important;
+	width: 15% !important;
 }
 .form_overview thead tr th:first-child{
 	width: 200px;
 }
 table .column-id {
 	width: 50px !important;
-}
-.pure-button-small{
-	margin-left:5px;
 }
