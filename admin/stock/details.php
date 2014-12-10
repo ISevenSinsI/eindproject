@@ -22,24 +22,28 @@
         		<td><?= $product["id"]; ?></td>
         	</tr>
             <tr>
-                <td>Gebruikersnaam</td>
+                <td>Product</td>
                 <td><?=$product["product"]?></td>
             </tr>
             <tr>
-            	<td>Voorletters</td>
+            	<td>Type</td>
             	<td><?= $product["type"]; ?></td>
             </tr>
             <tr>
-                <td>Voorvoegsel</td>
-                <td><?=$product["factory_id"]?></td>
+                <td>Fabriek</td>
+                <td><?=$product["factory"]?></td>
             </tr>
             <tr>
-                <td>Achternaam</td>
-                <td><?=$product["buy_price"];?></td>
+                <td>Minimum voorraad</td>
+                <td><?= number_format($product["minimum_stock"],0,",",".");?></td>  
             </tr>
             <tr>
-                <td>Rol</td>
-                <td><?=$product["sell_price"]?></td>
+                <td>Inkoopprijs</td>
+                <td>&euro; <?= number_format($product["buy_price"],2,",","."); ?></td>
+            </tr>
+            <tr>
+                <td>Verkoopprijs</td>
+                <td>&euro; <?= number_format($product["sell_price"],2,",","."); ?></td>
             </tr>
         </tbody>
     </table>

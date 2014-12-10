@@ -80,6 +80,29 @@
 
 		return $data;
 	}
+
+	function order_list()
+	{
+		$db = login_sql();
+
+		$sql = "
+				SELECT `products`.*, `stock`.*
+				FROm `products`
+				LEFT JOIN `stock`
+				ON `products`.id = `stock`.product_id
+				WHERE `stock`.amount < `products`.minimum_stock";
+	
+
+		$query = mysqli_query($db,$sql);
+
+		$data = array();
+
+		while($row = mysqli_fetch_assoc($query)){
+
+		}
+		
+		return $data;
+	}
 	
 
 

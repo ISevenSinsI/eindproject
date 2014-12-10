@@ -31,10 +31,15 @@
 		$db = login_sql();
 
 		$sql = "
-			SELECT *
-				
+			SELECT 
+				`products`.*,
+				`factories`.`factory`
 			FROM
 				`products`
+			JOIN
+				`factories`
+			ON
+				`products`.`factory_id` = `factories`.`id`
 			WHERE NOT
 				`products`.`deleted`
 		";
@@ -76,11 +81,6 @@
 
 	function new_product($data){
 
-		/* safety */
-		// foreach($data as $value){
-		// 	htmlentities($value);
-		// }
-
 		$db = login_sql();
 
 		$sql = "
@@ -89,20 +89,23 @@
 					`product`,
 					`type`,
 					`factory_id`,
+					`minimum_stock`,
 					`buy_price`,
 					`sell_price`
 				)
 			VALUES (
+				'{$data["product"]}',
 				'{$data["type"]}',
 				'{$data["factory_id"]}',
+				'{$data["minimum_stock"]}',
 				'{$data["buy_price"]}',
 				'{$data["sell_price"]}'
 			)
 		";
 
-		;
-
 		$query = mysqli_query($db,$sql);
+
+		
 
 		return true;
 	}
@@ -135,6 +138,7 @@
 				`product`	= '{$data["product"]}',
 				`type` 	= '{$data["type"]}',
 				`factory_id` 	= '{$data["factory_id"]}',
+				`minimum_stock` = '{$data["minimum_stock"]}',
 				`buy_price` = '{$data["buy_price"]}',
 				`sell_price` 	= '{$data["sell_price"]}'
 			WHERE
@@ -156,9 +160,15 @@
 				`products`.`type`,
 				`products`.`factory_id`,
 				`products`.`buy_price`, 
-				`products`.`sell_price`
+				`products`.`sell_price`,
+				`products`.`minimum_stock`,
+				`factories`.`factory`
 			FROM
 				`products`
+			JOIN
+				`factories`
+			ON
+				`products`.`factory_id` = `factories`.`id`
 			WHERE
 				`products`.`id` = '{$id}'
 		";

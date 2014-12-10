@@ -44,6 +44,10 @@
 				</td>
 			</tr>
 			<tr>
+				<td>Minimum voorraad</td>
+				<td><input type="text" name="minimum_stock" value="<?= $product['minimum_stock']; ?>" required	/></td>
+			</tr>
+			<tr>
 				<td>Inkoopprijs</td>
 				<td><input type="text" name="buy_price" value="<?= $product['buy_price']; ?>" required	/></td>
 			</tr>
@@ -82,6 +86,7 @@ $(document).ready(function(){
 			product : $("input[name='product']").val(),
 			type: $("input[name='type']").val(),
 			factory_id : $("select[name='factory_id'] option:selected").val(),
+			minimum_stock: $("input[name='minimum_stock']").val(),
 			buy_price : $("input[name='buy_price']").val(),
 			sell_price : $("input[name='sell_price']").val(),
 		},function(data){
