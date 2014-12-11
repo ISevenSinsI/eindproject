@@ -83,7 +83,7 @@ $(document).ready(function(){
 			buy_price : $("input[name='buy_price']").val(),
 			sell_price : $("input[name='sell_price']").val(),
 		},function(data){
-			// window.location = link;
+			window.location = link;
 		});
 	});
 });

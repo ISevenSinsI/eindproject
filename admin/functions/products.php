@@ -128,8 +128,6 @@
 		}
 
 		$sql = rtrim($sql,",");
-
-		echo $sql;
 		
 		$query = mysqli_query($db, $sql);
 
