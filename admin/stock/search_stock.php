@@ -138,7 +138,7 @@
 			console.log(result);
 
 			if(result["amount"] < result["product"]["minimum_stock"]){
-				name = "<i class='fa fa-exclamation-circle' title='Te bestellen' style='color: red; font-size: 18px'></i> " + result["product"]["name"];
+				name = "<i class='fa fa-exclamation-triangle' title='Te bestellen' style='color: red; font-size: 18px'></i> " + result["product"]["name"];
 			} else {
 				name = result["product"]["name"];
 			}

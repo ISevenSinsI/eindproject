@@ -38,7 +38,7 @@
     <div class="pure-g top-bar">
       <div class="container">
         <div class="pure-u-1-12">
-          <a class="brand" style="margin:0px;" href="#"><img width="70" style="margin-bottom: -20%;" src="../../assets/img/logo.png"/></a>
+          <a class="brand" style="margin:0px;" href="#"><img width="100" style="margin-bottom: -20%;" src="../../assets/img/logo.png"/></a>
         </div>
         <div class="pure-u-11-12">
             <?php require("menu.php"); ?>

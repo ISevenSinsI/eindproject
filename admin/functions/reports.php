@@ -29,6 +29,7 @@
 			ON `products`.factory_id = `factories`.id
 			WHERE NOT `products`.deleted
 			AND NOT `locations`.deleted
+			ORDER BY `stock`.`amount` DESC
 				";
 	
 
@@ -77,7 +78,7 @@
 			ON `products`.factory_id = `factories`.id
 			WHERE NOT `products`.deleted
 			AND NOT `locations`.deleted
-
+			ORDER BY `stock`.`amount` DESC
 		";
 		
 		$query = mysqli_query($db,$sql);
