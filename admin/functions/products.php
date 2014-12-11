@@ -115,8 +115,8 @@
 		$sql = "
 			INSERT INTO
 				`stock`(
-					`product_id`,
 					`location_id`,
+					`product_id`,
 					`amount`
 				)
 			VALUES
@@ -124,11 +124,14 @@
 		";
 
 		foreach($locations as $location_id => $location){
-			$sql .= "('{$product_id}', '{$location_id}', '0'),";
+			$sql .= "('{$location_id}', '{$product_id}', '0'),";
 		}
+
 		$sql = rtrim($sql,",");
+
+		echo $sql;
 		
-		$query = mysqli_query($sql);
+		$query = mysqli_query($db, $sql);
 
 		return true;
 	}
