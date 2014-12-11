@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<td>Beschrijving</td>
-				<td><input type="text" name="description" value="<?= $location['description']; ?>" /></td>
+				<td><textarea class="textarea-description" rows="3" cols="50" type="textbox" name="description"><?= $location['description']; ?> </textarea></td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="id" value="<?= $location['id']; ?>"/></td>
@@ -56,7 +56,7 @@
 			action: "edit_location",
 			id : $("input[name='id']").val(),
 			location : $("input[name='location']").val(),
-			description: $("input[name='description']").val(),
+			description: $(".textarea-description").val(),
 		},function(data){
 			show_save_message();
 		});

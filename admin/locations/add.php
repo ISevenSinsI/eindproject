@@ -24,7 +24,7 @@
 			</tr>
 			<tr>
 				<td>Beschrijving</td>
-				<td><input type="text" name="description" placeholder="Beschrijving" /></td>
+				<td><textarea class="textarea-description" rows="3" cols="50" type="textbox" name="description" placeholder="Beschrijving"></textarea></td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="id" value=""/></td>
@@ -50,7 +50,7 @@
 			action: "new_location",
 			id : $("input[name='id']").val(),
 			name : $("input[name='name']").val(),
-			description :$("input[name='description']").val(),
+			description :$(".textarea-description").val(),
 		},function(data){
 			window.location = link;
 		});
