@@ -37,6 +37,8 @@
 		 	case "edit.php":		return "Wijzigen";		break;
 		 	case "add.php":			return "Toevoegen";		break;
 		 	case "search_stock.php": return "Voorraad zoeken"; break;
+		 	case "stock_value.php":	return "Waarde voorraad"; break;
+		 	case "order_list.php":	return "Bestellijst"; 	break;
 		 }
 	}
 

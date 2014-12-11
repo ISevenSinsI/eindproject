@@ -137,6 +137,7 @@
 				`amount`,
 				`products`.`product`,
 				`products`.`type`,
+				`products`.`minimum_stock`,
 				`products`.`sell_price`,
 				`locations`.`location`,
 				`factories`.`factory`
@@ -167,6 +168,7 @@
 				$data["product"]["id"] = $product_id;
 				$data["product"]["name"] = $row["product"];
 				$data["product"]["type"] = $row["type"];
+				$data["product"]["minimum_stock"] = $row["minimum_stock"];
 				$data["product"]["sell_price"] = number_format($row["sell_price"],2,",",".");
 				$data["amount"] = $row["amount"];
 				$data["location"]["id"] = $location_id;
@@ -178,6 +180,7 @@
 				SELECT
 					`products`.`product`,
 					`products`.`type`,
+					`products`.`minimum_stock`,
 					`products`.`sell_price`,
 					`locations`.`location`,
 					`factories`.`factory` 
@@ -199,6 +202,7 @@
 			while($row = mysqli_fetch_assoc($query)){
 				$data["product"]["id"] = $product_id;
 				$data["product"]["name"] = $row["product"];
+				$data["product"]["minimum_stock"] = $row["minimum_stock"];
 				$data["product"]["type"] = $row["type"];
 				$data["product"]["sell_price"] = number_format($row["sell_price"],2,",",".");
 				$data["location"]["id"] = $location_id;

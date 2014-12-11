@@ -37,20 +37,21 @@
 
 	
 	<div class="pure-form pure-g search_result">	
-		<div class="pure-u-1-2">
+		<div class="pure-u-3-4" style="margin-left: auto; margin-right: auto;">
 			<h2 class="location_name">Locatie</h2>
 			<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 				<thead>
 					<tr style="color: white;">
-						<th>Product</th>
-						<th>Type</th>
-						<th>Fabriek</th>
+						<th style="width: 20%">Product</th>
+						<th style="width: 15%">Type</th>
+						<th style="width: 15%">Fabriek</th>
 						<th>Verkoopprijs</th>
+						<th>Minimum voorraad</th>
 						<th style="width: 300px;">Aantal</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr>						
 						<td class="product_name">
 
 						</td>
@@ -61,6 +62,9 @@
 
 						</td>
 						<td class="product_sell_price">
+
+						</td>
+						<td class="product_minimum_stock">
 
 						</td>
 						<td>
@@ -131,9 +135,18 @@
 		},function(data){
 			result = jQuery.parseJSON(data);
 
+			console.log(result);
+
+			if(result["amount"] < result["product"]["minimum_stock"]){
+				name = "<i class='fa fa-exclamation-circle' title='Te bestellen' style='color: red; font-size: 18px'></i> " + result["product"]["name"];
+			} else {
+				name = result["product"]["name"];
+			}
+
 			$("input[name='product_id']").val(result["product"]["id"]);
 			$("input[name='location_id']").val(result["location"]["id"]);
-			$(".product_name").html(result["product"]["name"]);
+			$(".product_minimum_stock").html(result["product"]["minimum_stock"]);
+			$(".product_name").html(name);
 			$(".product_type").html(result["product"]["type"]);
 			$(".product_sell_price").html('&euro; ' + result["product"]["sell_price"]);
 
