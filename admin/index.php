@@ -30,12 +30,7 @@
     <div class="pure-g top-bar">
       <div class="container">
         <div class="pure-u-1-12">
-        	<span class="fa-stack fa-lg">
-        		<i class="fa fa-cogs fa-stack-2x fa-3x"></i>
-        		<i class="fa fa-wrench fa-stack-2x fa-3x"></i>
-        		<i class="fa fa-hammer fa-stack-2x fa-3x"></i>
-        	</span>
-          <!-- <a class="brand" style="margin:0px;" href="#"><img width="70" style="margin-bottom: -20%;" src="../assets/img/logo.png"/></a> -->
+          <a class="brand" style="margin:0px;" href="#"><img width="100" style="margin-bottom: -20%;" src="../assets/img/logo.png"/></a>
         </div>
         <div class="pure-u-11-12">
         	<div class="menu-item last">

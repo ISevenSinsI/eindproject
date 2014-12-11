@@ -32,7 +32,7 @@
 				<tr>
 					<td> 
 						<?php if($product["minimum_stock"] > $product["amount"]): ?>
-							<i class='fa fa-exclamation-circle' title='Te bestellen' style='color: red; font-size: 18px'></i> 
+							<i class='fa fa-exclamation-triangle' title='Te bestellen' style='color: red; font-size: 18px'></i> 
 						<?php endif; ?>
 						<?= $product["name"]; ?> 
 					</td>
