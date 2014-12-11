@@ -108,6 +108,28 @@
 
 		$query = mysqli_query($db,$sql);		
 
+		$product_id = mysqli_insert_id($db);
+
+		$locations = get_all_locations();
+
+		$sql = "
+			INSERT INTO
+				`stock`(
+					`product_id`,
+					`location_id`,
+					`amount`
+				)
+			VALUES
+
+		";
+
+		foreach($locations as $location_id => $location){
+			$sql .= "('{$product_id}', '{$location_id}', '0'),";
+		}
+		$sql = rtrim($sql,",");
+		
+		$query = mysqli_query($sql);
+
 		return true;
 	}
 
