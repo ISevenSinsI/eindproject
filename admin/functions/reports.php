@@ -99,7 +99,11 @@
 				`locations`
 			ON
 				`stock`.`location_id` = `locations`.`id`
-			WHERE 
+			WHERE NOT
+				`products`.`deleted`
+			AND NOT
+				`locations`.`deleted`
+			AND 
 				`stock`.amount < `products`.minimum_stock
 		";
 
