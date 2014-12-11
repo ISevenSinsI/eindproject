@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2014 at 01:16 PM
+-- Generation Time: Dec 11, 2014 at 11:38 AM
 -- Server version: 5.6.15-log
 -- PHP Version: 5.5.8
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `factories` (
   `phone` varchar(32) DEFAULT NULL,
   `deleted` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `factories`
@@ -64,7 +64,8 @@ CREATE TABLE IF NOT EXISTS `factories` (
 INSERT INTO `factories` (`id`, `factory`, `phone`, `deleted`) VALUES
 (1, 'Bosch', '0411-454647', 0),
 (2, 'Black & Dekker', '0909-0538', 0),
-(3, 'Precision', '0800-0909', 0);
+(3, 'Precision', '0800-0909', 0),
+(4, 'Ruud Fabriekske', '0909-0807', 1);
 
 -- --------------------------------------------------------
 
@@ -78,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `locations` (
   `deleted` int(1) DEFAULT '0',
   `description` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `locations`
@@ -87,10 +88,11 @@ CREATE TABLE IF NOT EXISTS `locations` (
 INSERT INTO `locations` (`id`, `location`, `deleted`, `description`) VALUES
 (1, 'Rotterdam', 0, 'Onze prachtlocatie aan de haven is mooi '),
 (2, 'Almere', 0, 'Onze prachtlocatie in Almere is mooi '),
-(3, 'Eindhoven', 0, 'EINDHOVEEE! EINDHOVEEEEE! EINDHOVEEEEEEE!'),
+(3, 'Eindhoven', 0, 'EINDHOVEE!!! EINDHOVEEEEE!!!! EEINNDHDOOOVEEEEEEE!!! errup EEEINDHOVOVEEEEEEEEEE!'),
 (4, 'Vissers', 1, ''),
 (5, 'Errup', 1, ''),
-(6, 'Erruuupppp', 0, 'Center of the universe');
+(6, 'Erruuupppp', 0, 'Center of the universe'),
+(7, 'Veghel', 0, 'tja, hier wil je niet wonen. Of misschien toch wel?');
 
 -- --------------------------------------------------------
 
@@ -106,21 +108,20 @@ CREATE TABLE IF NOT EXISTS `products` (
   `buy_price` decimal(11,2) NOT NULL,
   `sell_price` decimal(11,2) NOT NULL,
   `deleted` int(11) NOT NULL DEFAULT '0',
+  `minimum_stock` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `eerste` (`factory_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `product`, `type`, `factory_id`, `buy_price`, `sell_price`, `deleted`) VALUES
-(1, 'Boormachine', 'XM-1022', 2, '40.00', '60.00', 0),
-(2, 'Hamer', 'MX-2011', 2, '15.00', '70.00', 0),
-(3, 'Schroevendraaier', '2020-MM', 1, '23.00', '55.00', 0),
-(4, 'd', 'd', 2, '0.00', '0.00', 1),
-(5, 'Fiets', 'aids', 2, '40.00', '50.00', 1),
-(7, 'Fiets', 'X-2211', 1, '40.00', '50.00', 1);
+INSERT INTO `products` (`id`, `product`, `type`, `factory_id`, `buy_price`, `sell_price`, `deleted`, `minimum_stock`) VALUES
+(8, 'Boormachine', 'GH-2011', 1, '40.00', '50.00', 0, 5),
+(9, 'Boormachine', 'GH-2011', 1, '40.00', '50.00', 1, 5),
+(10, 'Boormachine', 'GH-2011', 1, '40.00', '50.00', 1, 5),
+(11, 'Spijkerpistool', 'HG90-90', 3, '40.00', '79.00', 0, 50);
 
 -- --------------------------------------------------------
 
@@ -165,9 +166,30 @@ CREATE TABLE IF NOT EXISTS `stock` (
 
 INSERT INTO `stock` (`location_id`, `product_id`, `amount`) VALUES
 (1, 2, 50),
-(1, 2, 45),
 (3, 3, 46),
-(2, 3, 12);
+(2, 3, 12),
+(2, 2, 50),
+(3, 1, 666),
+(1, 8, 4),
+(2, 8, 22),
+(3, 8, 2),
+(6, 8, 55),
+(1, 9, 0),
+(2, 9, 0),
+(3, 9, 0),
+(6, 9, 0),
+(1, 10, 0),
+(2, 10, 0),
+(3, 10, 0),
+(6, 10, 0),
+(1, 11, 555),
+(2, 11, 11),
+(3, 11, 2),
+(6, 11, 3),
+(1, 12, 0),
+(2, 12, 0),
+(3, 12, 0),
+(6, 12, 0);
 
 -- --------------------------------------------------------
 
@@ -183,9 +205,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_name` varchar(32) NOT NULL,
   `username` varchar(32) NOT NULL,
   `password` varchar(64) NOT NULL,
-  `deleted` int(1) DEFAULT NULL,
+  `deleted` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `users`
@@ -193,8 +215,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `role_id`, `initials`, `prefix`, `last_name`, `username`, `password`, `deleted`) VALUES
 (1, 1, 'J', 'De', 'Man', 'Jorie', '3c649185ca41b2c53060c8266b0845206b4ab363', 0),
-(2, 3, 'R', '', 'Vissers', 'Ruud', '4317b620a5cdb210fb92123281588ec4b30a74e7', 0),
-(3, 0, '', '', '', '', '2356e59638c3bc00ed8b72d433dbf0b7ecedc536', 0);
+(2, 1, 'R', '', 'Vissers', 'Ruud', '4317b620a5cdb210fb92123281588ec4b30a74e7', 0),
+(3, 0, '', '', '', '', '2356e59638c3bc00ed8b72d433dbf0b7ecedc536', 0),
+(4, 1, 'test', 'ge', 'bruikerts', 'testgebruiker', '38905a016f394a3f5090b5ed665c12ebbe3ba619', 0),
+(5, 2, 'tester', 'tester', 'tester', 'Tester', 'ab4d8d2a5f480a137067da17100271cd176607a1', 0);
 
 --
 -- Constraints for dumped tables
