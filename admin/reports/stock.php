@@ -8,7 +8,7 @@
 	}
 
 	include("../base/header.php");
-	require("../functions/temp_reports.php");
+	require("../functions/reports.php");
 
 	$data = stock();
 	//p($data);
@@ -30,7 +30,12 @@
 			</tr>
 			<?php foreach($location["products"] as $product): ?>
 				<tr>
-					<td> <?= $product["name"]; ?> </td>
+					<td> 
+						<?php if($product["minimum_stock"] > $product["amount"]): ?>
+							<i class='fa fa-exclamation-circle' title='Te bestellen' style='color: red; font-size: 18px'></i> 
+						<?php endif; ?>
+						<?= $product["name"]; ?> 
+					</td>
 					<td> <?= $product["type"]; ?> </td>
 					<td> <?= $product["factory"]; ?> </td>
 					<td> <?= $product["amount"]; ?> </td>
