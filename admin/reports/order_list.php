@@ -26,7 +26,9 @@
 		</tr>
 		<?php foreach($location["products"] as $product): ?>
 			<tr>
-				<td><?= $product["name"]; ?></td>
+				<td>
+					<?= $product["name"]; ?>
+				</td>
 				<td><?= $product["type"]; ?></td>
 				<td><?= $product["factory"]; ?></td>
 				<td><?= $product["minimum_stock"]; ?></td>

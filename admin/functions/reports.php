@@ -21,7 +21,7 @@
 	$db = login_sql();
 
 		$sql = "
-			SELECT `products`.product, `products`.`id` AS `product_id`, `locations`.location,   `locations`.id AS `location_id`, `products`.type, `factories`.factory, `stock`.amount, `products`.buy_price, `products`.sell_price
+			SELECT `products`.product, `products`.`minimum_stock`, `products`.`id` AS `product_id`, `locations`.location,   `locations`.id AS `location_id`, `products`.type, `factories`.factory, `stock`.amount, `products`.buy_price, `products`.sell_price
 			FROM `products`
 			LEFT JOIN `stock`
 			ON `products`.id = `stock`.product_id
@@ -52,6 +52,7 @@
 				$data["locations"][$row["location_id"]]["products"][$row["product_id"]] = array(
 					"name"	=> $row["product"],
 					"type"	=>	$row["type"],
+					"minimum_stock"	=>	$row["minimum_stock"],
 					"sell_price" => $row["sell_price"],
 					"buy_price" => $row["buy_price"],
 					"amount"	=>	$row["amount"],
