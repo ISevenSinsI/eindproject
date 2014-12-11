@@ -25,8 +25,8 @@
 				<th class="table_actions">Type </th>
 				<th class="table_actions">Fabriek </th>
 				<th class="table_actions">Aantal </th>
-				<th class="table_actions">Inkoopprijs </th>
-				<th class="table_actions">Verkoopprijs</th>
+				<th class="table_actions table_price">Inkoopprijs </th>
+				<th class="table_actions table_price">Verkoopprijs</th>
 			</tr>
 			<?php foreach($location["products"] as $product): ?>
 				<tr>
@@ -34,8 +34,8 @@
 					<td> <?= $product["type"]; ?> </td>
 					<td> <?= $product["factory"]; ?> </td>
 					<td> <?= $product["amount"]; ?> </td>
-					<td> &euro;<?= number_format($product["buy_price"], 2,",","."); ?> </td>
-					<td> &euro;<?= number_format($product["sell_price"], 2,",","."); ?> </td>
+					<td class="table_price"> &euro;<?= number_format($product["buy_price"], 2,",","."); ?> </td>
+					<td class="table_price"> &euro;<?= number_format($product["sell_price"], 2,",","."); ?> </td>
 				</tr>
 			<?php endforeach; ?>
 		</table><br />

@@ -88,3 +88,6 @@ table .column-id {
 #datatable thead tr th input{
 	width: 100%;
 }
+.table_price {
+	text-align: right;
+}

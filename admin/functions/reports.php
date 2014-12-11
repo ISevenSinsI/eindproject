@@ -28,7 +28,7 @@
 			LEFT JOIN `locations`
 			ON `stock`.location_id = `locations`.id
 			LEFT JOIN `factories`
-			ON `products`.id = `factories`.id
+			ON `products`.factory_id = `factories`.id
 			WHERE NOT `products`.deleted
 			AND NOT `locations`.deleted
 
