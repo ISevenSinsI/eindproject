@@ -31,7 +31,7 @@
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="#">ToolsForEver</a></h1>
+			<h1><a href="#"><div class="logo"><img width="200" src="assets/img/NewLogo.jpg"/></div>ToolsForEver</a></h1>
 			</div>
 		<div id="menu">
 			<!-- <ul>
@@ -52,17 +52,19 @@
 			<h2>Onze filialen</h2>
 			<!-- <span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>  -->
 		</div>
+		<?php $i = 1; ?>
 		<?php foreach($locations as $location): ?>
 			<div class="column1 pure-u-1-4" style="color: rgba(0,0,0,0.5); text-align: center; height: 175px;">
 					<!-- <img src="assets/img/locaties/locatie_1.png" alt="" class="image image-full" /> -->
 				<div class="pure-u-1" style="text-align: center;">
-					<i class="fa fa-home fa-4x" ></i>
+					<img width="128" height="64" src="assets/img/locaties/locatie_<?= $i; ?>.png"/>
 				</div>
 				<h3 style="text-align: center;"><?= $location["location"]; ?></h3>
 				<div style="width: 250px;">
 					<?= $location["description"]; ?>
 				</div>
 			</div>
+			<?php $i++; ?>
 		<?php endforeach; ?>
 	</div>
 </div>
@@ -74,12 +76,25 @@
 			<span class="byline">Voor vragen kunt u contact opnemen!</span> 
 		</div>
 		<div class="content pure-g">
-			<p>	
-				Tel: 0413 - 634895<br />
-				Tax: 073 - 343434<br />
-				Email : info@toolsforever.nl<br />
-				Hoge heuvel 12<br />
-				5443 DF Errup<br />
+			<p>
+				<b>Bezoekadres:</b><br />
+				ToolsForEver<br />
+				Enter 36-42<br />
+				Eindhoven
+			</p>
+			<p>
+				<b>Postadres:</b><br />
+				ToolsForEver<br />
+				Postbus 12345<br />
+				5600 VM  EINDHOVEN
+			</p>
+			<p>
+				<b>Telefoon:</b><br />
+				(040) 987 65 00
+			</p>
+			<p>
+				<b>Fax:</b><br />	
+				(040) 987 65 99
 			</p>
 		</div>
 	</div>

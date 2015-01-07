@@ -3,6 +3,11 @@
 	require("../functions/users.php"); 
 	
 	$users = get_all_users();
+
+	if($_SESSION["user"]["role_id"] > 2){
+		echo "Geen directe toegang mogelijk, onvoldoende rechten";
+		die();
+	}
 ?>
 	<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 		<thead>

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <div class="menu-item first">
     <div class="menu-item-inner">
         <a class="pure-button secondary-button" href="../users/overview.php">
@@ -7,14 +8,16 @@
     </div>
 </div>
 
-<div class="menu-item first">
-    <div class="menu-item-inner">
-        <a class="pure-button secondary-button" href="../locations/overview.php">
-            <i class="fa fa-globe fa-2x"></i>
-            <p>Locaties</p>
-        </a>
+<?php if($_SESSION["user"]["role_id"] < 3): ?>
+    <div class="menu-item first">
+        <div class="menu-item-inner">
+            <a class="pure-button secondary-button" href="../locations/overview.php">
+                <i class="fa fa-globe fa-2x"></i>
+                <p>Locaties</p>
+            </a>
+        </div>
     </div>
-</div>
+<?php endif; ?>
 
 <div class="menu-item first">
     <div class="menu-item-inner">
@@ -25,6 +28,7 @@
     </div>
 </div>
 
+<?php if($_SESSION["user"]["role_id"] < 3): ?>
 <div class="menu-item first">
     <div class="menu-item-inner">
         <a class="pure-button secondary-button" href="../factories/overview.php">
@@ -33,7 +37,9 @@
         </a>
     </div>
 </div>
+<?php endif; ?>
 
+<?php if($_SESSION["user"]["role_id"] < 3): ?>
 <div class="menu-item first">
     <div class="menu-item-inner">
         <a class="pure-button secondary-button" href="../reports/overview.php">
@@ -42,6 +48,7 @@
         </a>
     </div>
 </div>
+<?php endif; ?>
 
 <div class="menu-item last">
     <div class="menu-item-inner">

@@ -2,6 +2,11 @@
 	include("../base/header.php");
 	require("../functions/products.php"); 
 	$products = get_all_products();
+
+	if($_SESSION["user"]["role_id"] > 2){
+		echo "Geen directe toegang mogelijk, onvoldoende rechten";
+		die();
+	}
 ?>
 	<table class="pure-table pure-table-bordered pure-table-striped dataTable no-footer" id="datatable">
 		<thead>
