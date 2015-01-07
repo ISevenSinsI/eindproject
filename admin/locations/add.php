@@ -8,7 +8,9 @@
 	include("../base/header.php");
 	require("../functions/locations.php");
 ?>
-
+<div class="pure-button pure-button-primary save_button">
+	Opslaan
+</div>
 <fieldset>
 	<table class="pure-table pure-table-bordered pure-table-striped pure-form form form_overview">
 		<thead>

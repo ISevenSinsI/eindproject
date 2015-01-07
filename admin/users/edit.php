@@ -12,7 +12,9 @@
 	$user = get_user($id);
 	$roles = get_all_roles();
 ?>
-
+<div class="pure-button pure-button-primary edit_button">
+	Wijzigen
+</div>
 <fieldset>
 	<table class="pure-table pure-table-bordered pure-table-striped pure-form form form_overview">
 		<thead>

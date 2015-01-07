@@ -11,7 +11,9 @@
 	$id = $_GET["id"];
 	$location = get_location($id);
 ?>
-
+<div class="pure-button pure-button-primary edit_button">
+						Wijzigen
+					</div>
 <fieldset>
 	<table class="pure-table pure-table-bordered pure-table-striped pure-form form form_overview">
 		<thead>

@@ -1,5 +1,5 @@
 <div class="dialog product_delete_dialog">
-	<div class="dialog-inner">
+	<div class="dialog-inner" style="height: 250px; margin-top: 15%;">
 		<div class="dialog-title">
 			<div class="title">
 				Product verwijderen
@@ -12,6 +12,7 @@
 			<form class="pure-form pure-form-aligned product-delete-form" method="post" action="#">
 				<div class="pure-control-group" style="text-align: center;">
                     <p>Weet u zeker dat u het product <i class="title"></i> wilt verwijderen?</p>
+                    <div class="login_error">Voorraad aanwezig.</div>
                 </div>
 
                  <div class="pure-control-group dialog_control">
@@ -34,7 +35,14 @@
 				action: 'delete_product',
 				id: id,
 			},function(data){
-				window.location = window.location;
+				console.log(data);
+				if(data == "true"){
+					window.location = window.location;
+				} else {
+					$(".login_error").show();
+					$(".dialog-submit").hide();
+					$(".dialog-close").hide();
+				}
 			});
 
 			return false;

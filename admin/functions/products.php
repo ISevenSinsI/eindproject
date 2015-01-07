@@ -5,6 +5,8 @@
 		if($_POST["action"] == "delete_product"){
 			$id = $_POST["id"];
 			$delete = delete_product($id);
+
+			echo json_encode($delete);
 		}
 		if($_POST["action"] == "edit_product"){
 			echo json_encode(edit_product($_POST));
@@ -166,6 +168,19 @@
 
 	function delete_product($id){
 		$db = login_sql();
+
+		$sql = "
+				SELECT * 
+				FROM `stock`
+				WHERE `product_id` = '{$id}'
+				AND `amount`
+		";	
+
+		$query = mysqli_query($db, $sql);
+			
+		if($query->num_rows > 0){
+			return "stock";
+		}
 
 		$sql = "
 			UPDATE

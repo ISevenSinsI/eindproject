@@ -14,7 +14,9 @@
 	$product = get_product($id);
 	$factories = get_all_factories();
 ?>
-
+<div class="pure-button pure-button-primary edit_button">
+	Wijzigen
+</div>
 <fieldset>
 	<table class="pure-table pure-table-bordered pure-table-striped pure-form form form_overview">
 		<thead>

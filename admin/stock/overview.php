@@ -71,6 +71,10 @@
 		$(".title").html(product);
 		$("input[name='deleted_id']").val(id);
 
+		$(".dialog-submit").show();
+		$(".dialog-close").show();
+		$(".login_error").hide();
+
 		$(".dialog").show();
 
 		return false;

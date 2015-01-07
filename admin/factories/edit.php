@@ -11,13 +11,17 @@
 	$id = $_GET["id"];
 	$factory = get_factory($id);
 ?>
-
+<div class="pure-button pure-button-primary edit_button">
+	Wijzigen
+</div>
 <fieldset>
 	<table class="pure-table pure-table-bordered pure-table-striped pure-form form form_overview">
 		<thead>
 			<tr>
 				<th>Gegevens aanpassen</th>
-				<th></th>
+				<th>
+
+				</th>
 			</tr>
 		</thead>
 		<tbody>
