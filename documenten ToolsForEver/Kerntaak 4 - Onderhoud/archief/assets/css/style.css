@@ -1,0 +1,93 @@
+.red_button{
+	background-color: #84CC7A !important;
+}
+.delete_button{
+	background-color: #cc2626 !important;
+}
+.content_inner{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+.content_inner input{
+	width: 200px;
+}
+.login_error{
+	background: rgb(202, 60, 60);	
+	width: 190px;
+	padding: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	border-radius: 7px;
+	margin-top: 10px;
+	display: none;
+}
+.table_legend{
+	color: white;
+}
+.form_overview{
+	text-align: left;
+}
+.breadcrumbs{
+	padding-bottom: 15px;
+	font-weight: bold;
+}
+.column_id{
+	width: 30px;
+}
+.column_id input{
+	width: 30px;
+}
+.save_message{
+	display: none;
+}
+.table_actions{
+	width: 15% !important;
+}
+.form_overview thead tr th:first-child{
+	width: 200px;
+}
+table .column-id {
+	width: 50px !important;
+}
+.search_result .pure-u-1-2{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.stock_value {
+	text-align: left;
+	border: 1px solid black;
+}
+
+.stock_value td{
+	border: 1px solid black;
+}
+
+.stock_value th {
+	background-color: #262626;
+	color: white;
+}
+
+.stock_value .total_location{
+	text-align: right;
+}
+.table_legend{
+	font-size: 11px;
+}
+.table_legend th{
+	padding:0px 0px 3px 5px;
+	color: #cecece;
+	border-left: 0px;
+}
+
+.pure-table td, .pure-table th{
+	padding: 6px 5px !important;
+}
+#datatable thead tr th input{
+	width: 100%;
+}
+.table_price {
+	text-align: right;
+}
