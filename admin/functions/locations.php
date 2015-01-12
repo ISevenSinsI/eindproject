@@ -16,7 +16,7 @@
 
 
 	function login_sql(){
-		$link = mysqli_connect('localhost', 'root', '', 'toolsforever');
+		$link = mysqli_connect('localhost', 'ruudvisser_ruud', 'toolsforever', 'ruudvisser_toolsforever');
 
 		//check if connection is success
 		if(!$link){

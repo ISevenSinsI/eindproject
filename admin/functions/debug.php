@@ -51,7 +51,7 @@
 	
 		// Get last of array (i.e. 'edit.php?id=1') 
 		// And delete query parameter        
-        $action = explode("?", array_pop($explode))[0];
+        $action = explode("?", array_pop($explode));
         // Translate action for display
         $action_display = translate($action);
 

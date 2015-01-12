@@ -64,6 +64,9 @@
 <script type="text/javaScript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>	
 	$(document).ready(function(){
+
+		alert("iets");
+
 		$(".login_btn").on("click", function(){
 			login();
 			return false;
